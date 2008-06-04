@@ -1,0 +1,151 @@
+---
+
+# +------------------------------------------------------------------
+# |
+# | Base config.
+# |
+# | Will be overwritten with special values for sub environments
+# |
+# |   'development'
+# |   'live'
+# |   'test'
+# |
+# | See below.
+# +------------------------------------------------------------------
+
+name: Artemis
+
+test_value:              base
+test_value_only_in_base: only_in_base
+mcp_port:                1337
+mcp_host:                165.204.85.71
+tftp_server_address:     165.204.85.71
+osrc_rst:                /public/bin/osrc_rst_no_menu
+
+# 'db' is DEPRECATED in favor of simpler 'database'
+db:
+  type:       mysql
+  user:       artemis
+  password:   xyzxyzaa
+  testdb:     testsystem
+  hardwaredb: hardwaredb
+
+database:
+  TestsDB:
+    dsn:        dbi:mysql:dbname=testsystem
+    username:   artemis
+    password:   xyzxyzaa
+  TestrunDB:
+    dsn:        dbi:mysql:dbname=testrundb
+    username:   artemis
+    password:   TODO
+  ReportsDB:
+    dsn:        dbi:mysql:dbname=reportsdb
+    username:   artemis
+    password:   TODO
+  HardwareDB:
+    dsn:        dbi:mysql:dbname=hardwaredb
+    username:   artemis
+    password:   xyzxyzaa
+
+
+# We check for new tests every 5 minutes. This eliminates the need for
+# a communication channel between MCP and Webcontrol other than the
+# database.
+times:
+   poll_intervall:  30
+   timeout_default: 600
+
+# paths for files written by MCP
+paths:
+   # directory to mount the test root image to (until a better approach is available)
+   base_dir:               /mnt/target/
+   build_conf_path:        /usr/share/artemis/test_data/config/
+   build_dir:              /usr/share/artemis/build/
+   ctp_conf_dir:           /etc/test/
+   grubpath:               /usr/share/artemis/test_data/artemis_conf/
+   # path to put kernels build by artemis into
+   kernel_dest:            /usr/share/artemis/packages/build/
+   # local_conf_dir contains information needed for system installation
+   local_conf_dir:         /etc/artemis/
+   localdata_path:         /tftpboot/
+   logfilepath:            /usr/share/artemis/test_data/output/
+   nfskernel_path:         /tftpboot/
+   nfsroot:                165.204.85.14:/vol/osrc_data/nfsroot/installation_base/
+   output_dir:             /usr/share/artemis/output/
+   output_target:          /mnt/output/
+   package_dir:            /usr/share/artemis/packages/
+   patchdir:               patches/
+   # Base directories to search for the test programs
+   testprog_path:          /usr/share/artemis/testprogram/
+
+# basenames of files
+files:
+  test_default: default
+  test_config:  config
+  log4perl_cfg: log4perl.cfg
+
+# options used for patching
+patchopt:
+  - -p1
+
+# This variable controls whether minor errors generate warnings (and
+# MCP tries to do something smart to continue) or whether such errors
+# lead to failure of the script. True chooses the second alternative.
+
+strict_checking: 1
+conserver: 
+   server: gutrune.amd.com
+   port:   7782
+   user:   artemis
+
+
+# +------------------------------------------------------------------
+# |
+# | The following subsections (development, test, live) are merged
+# | into the toplevel hash and are NOT meant to be used directly.
+# |
+# +------------------------------------------------------------------
+
+# special live environment
+live:
+  test_value:     live
+
+# explicit development environment
+development:
+  test_value:          development
+  mcp_host:            165.204.85.37
+  tftp_server_address: 165.204.85.37
+  paths:
+    nfsroot:           165.204.85.14:/vol/osrc_data/nfsroot/installation_base_devel/
+  database:
+    TestsDB:
+      dsn:        dbi:mysql:dbname=testsystem;host=165.204.85.37
+    TestrunDB:
+      dsn:        dbi:SQLite:dbname=artemis_testrundb_development.sqlite
+      username:   ''
+      password:   ''
+    ReportsDB:
+      dsn:        dbi:SQLite:dbname=artemis_reportsdb_development.sqlite
+      username:   ''
+      password:   ''
+
+
+# special test environment
+test:
+  test_value:     test
+  database:
+    TestsDB:
+      dsn:        dbi:SQLite:dbname=t/artemis_schema_testsdb_testdb.sqlite
+      username:   ''
+      password:   ''
+    TestrunDB:
+      dsn:        dbi:SQLite:dbname=t/artemis_schema_testrundb_test.sqlite
+      username:   ''
+      password:   ''
+    ReportsDB:
+      dsn:        dbi:SQLite:dbname=t/artemis_schema_reportsdb_test.sqlite
+      username:   ''
+      password:   ''
+  files:
+    log4perl_cfg: log4perl_test.cfg
