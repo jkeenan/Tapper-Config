@@ -14,7 +14,7 @@ my $builder = Module::Build->new
                        },
      requires => {
                   'Hash::Merge::Simple' => 0,
-                  'perl'                => 5.010,
+                  'perl'                => '5.010',
                  },
      add_to_cleanup      => [ 'Artemis-Config-*' ],
      create_makefile_pl  => 'traditional',
