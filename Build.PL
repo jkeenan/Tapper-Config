@@ -1,5 +1,6 @@
 use strict;
 use warnings;
+
 use Module::Build;
 
 my $builder = Module::Build->new
@@ -12,10 +13,11 @@ my $builder = Module::Build->new
                         'Test::More' => 0,
                        },
      requires => {
-                  'Hash::Merge::Simple'         => 0,
+                  'Hash::Merge::Simple' => 0,
+                  'perl'                => 5.010,
                  },
      add_to_cleanup      => [ 'Artemis-Config-*' ],
-     create_makefile_pl => 'traditional',
+     create_makefile_pl  => 'traditional',
     );
 
 $builder->add_build_element('yml');
