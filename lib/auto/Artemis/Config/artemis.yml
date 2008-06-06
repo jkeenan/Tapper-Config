@@ -103,7 +103,8 @@ conserver:
 # +------------------------------------------------------------------
 # |
 # | The following subsections (development, test, live) are merged
-# | into the toplevel hash and are NOT meant to be used directly.
+# | into the toplevel hash and are usually *NOT* meant to be used
+# | directly.
 # |
 # +------------------------------------------------------------------
 
@@ -122,11 +123,11 @@ development:
     TestsDB:
       dsn:        dbi:mysql:dbname=testsystem;host=165.204.85.37
     TestrunDB:
-      dsn:        dbi:SQLite:dbname=artemis_testrundb_development.sqlite
+      dsn:        dbi:SQLite:dbname=/tmp/artemis_testrundb_development.sqlite
       username:   ''
       password:   ''
     ReportsDB:
-      dsn:        dbi:SQLite:dbname=artemis_reportsdb_development.sqlite
+      dsn:        dbi:SQLite:dbname=/tmp/artemis_reportsdb_development.sqlite
       username:   ''
       password:   ''
 
