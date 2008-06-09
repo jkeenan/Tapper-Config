@@ -38,11 +38,11 @@ database:
   TestrunDB:
     dsn:        dbi:mysql:dbname=testrundb
     username:   artemis
-    password:   TODO
+    password:   xyzxyzaa
   ReportsDB:
     dsn:        dbi:mysql:dbname=reportsdb
     username:   artemis
-    password:   TODO
+    password:   xyzxyzaa
   HardwareDB:
     dsn:        dbi:mysql:dbname=hardwaredb
     username:   artemis
@@ -118,34 +118,34 @@ development:
   tftp_server_address: 165.204.85.37
   paths:
     nfsroot:           165.204.85.14:/vol/osrc_data/nfsroot/installation_base_devel/
-  database:
-    TestsDB:
-      dsn:        dbi:mysql:dbname=testsystem;host=165.204.85.37
-    TestrunDB:
-      dsn:        dbi:SQLite:dbname=artemis_testrundb_development.sqlite
-      username:   ''
-      password:   ''
-    ReportsDB:
-      dsn:        dbi:SQLite:dbname=artemis_reportsdb_development.sqlite
-      username:   ''
-      password:   ''
+#   database:
+#     TestsDB:
+#       dsn:        dbi:mysql:dbname=testsystem;host=165.204.85.37
+#     TestrunDB:
+#       dsn:        dbi:SQLite:dbname=artemis_testrundb_development.sqlite
+#       username:   ''
+#       password:   ''
+#     ReportsDB:
+#       dsn:        dbi:SQLite:dbname=artemis_reportsdb_development.sqlite
+#       username:   ''
+#       password:   ''
 
 
 # special test environment
 test:
   test_value:     test
-  database:
-    TestsDB:
-      dsn:        dbi:SQLite:dbname=t/artemis_schema_testsdb_testdb.sqlite
-      username:   ''
-      password:   ''
-    TestrunDB:
-      dsn:        dbi:SQLite:dbname=t/artemis_schema_testrundb_test.sqlite
-      username:   ''
-      password:   ''
-    ReportsDB:
-      dsn:        dbi:SQLite:dbname=t/artemis_schema_reportsdb_test.sqlite
-      username:   ''
-      password:   ''
+#   database:
+#     TestsDB:
+#       dsn:        dbi:SQLite:dbname=t/artemis_schema_testsdb_testdb.sqlite
+#       username:   ''
+#       password:   ''
+#     TestrunDB:
+#       dsn:        dbi:SQLite:dbname=t/artemis_schema_testrundb_test.sqlite
+#       username:   ''
+#       password:   ''
+#     ReportsDB:
+#       dsn:        dbi:SQLite:dbname=t/artemis_schema_reportsdb_test.sqlite
+#       username:   ''
+#       password:   ''
   files:
     log4perl_cfg: log4perl_test.cfg
