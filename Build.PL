@@ -10,7 +10,8 @@ my $builder = Module::Build->new
      dist_author         => 'OSRC SysInt Team <osrc-sysint@elbe.amd.com>',
      dist_version_from   => 'lib/Artemis/Config.pm',
      build_requires => {
-                        'Test::More' => 0,
+                        'Test::More'    => 0,
+                        'Artemis::Test' => 0,
                        },
      requires => {
                   'Hash::Merge::Simple' => 0,
