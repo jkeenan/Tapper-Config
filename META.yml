@@ -1,9 +1,9 @@
 ---
 name: Artemis-Config
-version: 2.010002
+version: 2.010003
 author:
   - 'OSRC SysInt Team <osrc-sysint@elbe.amd.com>'
-abstract: Artemis configuration module!
+abstract: Offer configuration for all parts running on Artemis host
 license: restrictive
 requires:
   Hash::Merge::Simple: 0
@@ -14,7 +14,7 @@ build_requires:
 provides:
   Artemis::Config:
     file: lib/Artemis/Config.pm
-    version: 2.010002
+    version: 2.010003
 generated_by: Module::Build version 0.280801
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html
