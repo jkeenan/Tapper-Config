@@ -11,7 +11,7 @@ use File::ShareDir 'module_file';
 
 =head1 NAME
 
-Artemis::Config - Artemis configuration module!
+Artemis::Config - Offer configuration for all parts running on Artemis host
 
 =head1 VERSION
 

@@ -38,11 +38,11 @@ database:
   TestrunDB:
     dsn:        dbi:mysql:dbname=testrundb
     username:   artemis
-    password:   TODO
+    password:   xyzxyzaa
   ReportsDB:
     dsn:        dbi:mysql:dbname=reportsdb
     username:   artemis
-    password:   TODO
+    password:   xyzxyzaa
   HardwareDB:
     dsn:        dbi:mysql:dbname=hardwaredb
     username:   artemis
@@ -120,16 +120,18 @@ development:
   paths:
     nfsroot:           165.204.85.14:/vol/osrc_data/nfsroot/installation_base_devel/
   database:
-    TestsDB:
-      dsn:        dbi:mysql:dbname=testsystem;host=165.204.85.37
     TestrunDB:
-      dsn:        dbi:SQLite:dbname=/var/tmp/artemis_testrundb_development.sqlite
-      username:   ''
-      password:   ''
+      dsn:        dbi:mysql:dbname=testrundb_dev
+      username:   artemis
+      password:   artemis
     ReportsDB:
-      dsn:        dbi:SQLite:dbname=/var/tmp/artemis_reportsdb_development.sqlite
-      username:   ''
-      password:   ''
+      dsn:        dbi:mysql:dbname=reportsdb_dev
+      username:   artemis
+      password:   artemis
+    HardwareDB:
+      dsn:        dbi:mysql:dbname=hardwaredb_dev
+      username:   artemis
+      password:   artemis
 
 
 # special test environment
