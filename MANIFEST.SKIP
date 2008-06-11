@@ -1,5 +1,5 @@
 Artemis-*.*.tar.gz
-Artemis-Config-*.*
+^Artemis-Config-*.*$
 _build
 blib
 ^Build$
