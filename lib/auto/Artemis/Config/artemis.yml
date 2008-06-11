@@ -17,7 +17,7 @@ name: Artemis
 
 test_value:              base
 test_value_only_in_base: only_in_base
-mcp_port:                1337
+mcp_port:                7357
 mcp_host:                165.204.85.71
 tftp_server_address:     165.204.85.71
 osrc_rst:                /public/bin/osrc_rst_no_menu
