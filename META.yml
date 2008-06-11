@@ -3,12 +3,13 @@ name: Artemis-Config
 version: 2.010002
 author:
   - 'OSRC SysInt Team <osrc-sysint@elbe.amd.com>'
-abstract: Offer configuration for all parts running on Artemis host
+abstract: Artemis configuration module!
 license: restrictive
 requires:
   Hash::Merge::Simple: 0
   perl: 5.010
 build_requires:
+  Artemis::Test: 0
   Test::More: 0
 provides:
   Artemis::Config:

@@ -10,7 +10,8 @@ WriteMakefile
           'VERSION_FROM' => 'lib/Artemis/Config.pm',
           'PREREQ_PM' => {
                            'Test::More' => 0,
-                           'Hash::Merge::Simple' => 0
+                           'Hash::Merge::Simple' => 0,
+                           'Artemis::Test' => 0
                          }
         )
 ;
