@@ -150,5 +150,9 @@ test:
       dsn:        dbi:SQLite:dbname=t/artemis_schema_reportsdb_test.sqlite
       username:   ''
       password:   ''
+    HardwareDB:
+      dsn:        dbi:SQLite:dbname=t/artemis_schema_hardwaredb_test.sqlite
+      username:   ''
+      password:   ''
   files:
     log4perl_cfg: log4perl_test.cfg
