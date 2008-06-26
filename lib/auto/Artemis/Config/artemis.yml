@@ -70,6 +70,7 @@ paths:
    local_conf_dir:         /etc/artemis/
    localdata_path:         /tftpboot/
    logfilepath:            /usr/share/artemis/test_data/output/
+   image_dir:              /mnt/images/
    nfskernel_path:         /tftpboot/
    nfsroot:                165.204.85.14:/vol/osrc_data/nfsroot/installation_base/
    output_dir:             /usr/share/artemis/output/
@@ -132,6 +133,8 @@ development:
       dsn:        dbi:mysql:dbname=hardwaredb_dev
       username:   artemis
       password:   artemis
+  files:
+    log4perl_cfg: log4perl_test.cfg
 
 
 # special test environment
