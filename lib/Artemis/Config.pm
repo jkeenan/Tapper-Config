@@ -62,7 +62,7 @@ This program is released under the following license: restrictive
         # TODO: automatically recognize context switch
         sub _switch_context
         {
-                shift if @_ && $_[0] eq 'Artemis::Config'; # throw away class if called as method
+                shift if @_ && $_[0] && $_[0] eq 'Artemis::Config'; # throw away class if called as method
 
                 my $env = shift // _getenv();
 
