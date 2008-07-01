@@ -18,7 +18,6 @@ my $builder = Module::Build->new
                   'perl'                => '5.010',
                  },
      add_to_cleanup      => [ 'Artemis-Config-*' ],
-     create_makefile_pl  => 'traditional',
     );
 
 $builder->add_build_element('yml');
