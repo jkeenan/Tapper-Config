@@ -11,7 +11,7 @@ my $builder = Module::Build->new
      dist_version_from   => 'lib/Artemis/Config.pm',
      build_requires => {
                         'Test::More'    => 0,
-                        'Artemis::Test' => 0,
+                        'Artemis::Test' => '2.010005',
                        },
      requires => {
                   'Hash::Merge::Simple' => 0,
