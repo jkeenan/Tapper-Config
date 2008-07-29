@@ -112,6 +112,11 @@ conserver:
 # special live environment
 live:
   test_value:     live
+  database:
+    HardwareDB:
+      dsn:        dbi:mysql:dbname=hardwaredb
+      username:   hardware
+      password:   myhardware
 
 # explicit development environment
 development:
