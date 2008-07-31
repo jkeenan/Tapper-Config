@@ -31,10 +31,6 @@ db:
   hardwaredb: hardwaredb
 
 database:
-  TestsDB:
-    dsn:        dbi:mysql:dbname=testsystem
-    username:   artemis
-    password:   xyzxyzaa
   TestrunDB:
     dsn:        dbi:mysql:dbname=testrundb
     username:   artemis
@@ -42,11 +38,11 @@ database:
   ReportsDB:
     dsn:        dbi:mysql:dbname=reportsdb
     username:   artemis
-    password:   xyzxyzaa
+    password:   artemis
   HardwareDB:
     dsn:        dbi:mysql:dbname=hardwaredb
-    username:   artemis
-    password:   xyzxyzaa
+    username:   hardware
+    password:   myhardware
 
 
 # We check for new tests every 5 minutes. This eliminates the need for
@@ -142,10 +138,6 @@ development:
 test:
   test_value:     test
   database:
-    TestsDB:
-      dsn:        dbi:SQLite:dbname=t/artemis_schema_testsdb_testdb.sqlite
-      username:   ''
-      password:   ''
     TestrunDB:
       dsn:        dbi:SQLite:dbname=t/artemis_schema_testrundb_test.sqlite
       username:   ''
