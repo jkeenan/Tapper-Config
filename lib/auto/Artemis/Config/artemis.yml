@@ -64,6 +64,7 @@ paths:
    build_dir:              /usr/share/artemis/build/
    ctp_conf_dir:           /etc/test/
    grubpath:               /usr/share/artemis/test_data/artemis_conf/
+   guest_mount_dir:        /mnt/guests/
    # path to put kernels build by artemis into
    kernel_dest:            /usr/share/artemis/packages/build/
    # local_conf_dir contains information needed for system installation
