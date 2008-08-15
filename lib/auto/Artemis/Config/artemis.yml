@@ -50,7 +50,7 @@ database:
 # database.
 times:
    poll_intervall:  30
-   timeout_default: 600
+   boot_timeout: 600
 
 # paths for files written by MCP
 paths:
