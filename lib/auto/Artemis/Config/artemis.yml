@@ -17,9 +17,11 @@ name: Artemis
 
 test_value:              base
 test_value_only_in_base: only_in_base
-mcp_port:                7357
+mcp_port:                1337
 mcp_host:                165.204.85.71
 tftp_server_address:     165.204.85.71
+report_server:           165.204.85.71
+report_port:             7357
 osrc_rst:                /public/bin/osrc_rst_no_menu
 
 # 'db' is DEPRECATED in favor of simpler 'database'
@@ -114,6 +116,7 @@ live:
 development:
   test_value:          development
   mcp_host:            165.204.85.37
+  report_server:       165.204.85.37
   tftp_server_address: 165.204.85.37
   paths:
     nfsroot:           165.204.85.14:/vol/osrc_data/nfsroot/installation_base_devel/
