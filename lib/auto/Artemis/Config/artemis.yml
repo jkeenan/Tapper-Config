@@ -36,7 +36,7 @@ database:
   TestrunDB:
     dsn:        dbi:mysql:dbname=testrundb
     username:   artemis
-    password:   xyzxyzaa
+    password:   artemis
   ReportsDB:
     dsn:        dbi:mysql:dbname=reportsdb
     username:   artemis
