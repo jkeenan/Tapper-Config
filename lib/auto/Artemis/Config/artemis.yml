@@ -116,7 +116,7 @@ live:
 development:
   test_value:          development
   mcp_host:            165.204.85.37
-  report_server:       165.204.85.37
+  report_server:       bascha
   tftp_server_address: 165.204.85.37
   paths:
     nfsroot:           165.204.85.14:/vol/osrc_data/nfsroot/installation_base_devel/
