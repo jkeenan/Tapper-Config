@@ -55,17 +55,23 @@ times:
    boot_timeout: 600
 
 # paths for files written by MCP
+# TODO: "written by MCP" not enough. also "consumed by PRC". Correct?
+# TODO: rename this entry into "mcp_paths" or correct the comment
 paths:
    # directory to mount the test root image to (until a better approach is available)
    base_dir:               /mnt/target/
+   # build_conf_path, build_conf_path currently unused
    build_conf_path:        /usr/share/artemis/test_data/config/
    build_dir:              /usr/share/artemis/build/
    ctp_conf_dir:           /etc/test/
-   grubpath:               /usr/share/artemis/test_data/artemis_conf/
+   # ss5 2008-09-17
+   #grubpath:               /usr/share/artemis/test_data/artemis_conf/
+   grubpath:               /data/bancroft/artemis/live/externalhosts/loge/artemis_conf/
    guest_mount_dir:        /mnt/guests/
    # path to put kernels build by artemis into
    kernel_dest:            /usr/share/artemis/packages/build/
    # local_conf_dir contains information needed for system installation
+   # TODO local_conf_dir DEPRECATED? -> Yes and no, see lib/Artemis/Config/Consumer.pm:123 uses hardcoded /etc/artemis
    local_conf_dir:         /etc/artemis/
    localdata_path:         /tftpboot/
    logfilepath:            /usr/share/artemis/test_data/output/
