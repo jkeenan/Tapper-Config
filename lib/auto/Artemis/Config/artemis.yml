@@ -20,7 +20,8 @@ test_value_only_in_base: only_in_base
 mcp_port:                1337
 mcp_host:                165.204.85.71
 tftp_server_address:     165.204.85.71
-report_server:           165.204.85.71
+#report_server:           165.204.85.71
+report_server:           165.204.85.119
 report_port:             7357
 osrc_rst:                /public/bin/osrc_rst_no_menu
 
@@ -63,7 +64,10 @@ paths:
    # build_conf_path, build_conf_path currently unused
    build_conf_path:        /usr/share/artemis/test_data/config/
    build_dir:              /usr/share/artemis/build/
-   ctp_conf_dir:           /etc/test/
+   logfilepath:            /usr/share/artemis/test_data/output/
+   patchdir:               patches/
+   # ss5 2008-09-18
+   #ctp_conf_dir:           /etc/test/
    # ss5 2008-09-17
    #grubpath:               /usr/share/artemis/test_data/artemis_conf/
    grubpath:               /data/bancroft/artemis/live/externalhosts/loge/artemis_conf/
@@ -74,16 +78,19 @@ paths:
    # TODO local_conf_dir DEPRECATED? -> Yes and no, see lib/Artemis/Config/Consumer.pm:123 uses hardcoded /etc/artemis
    local_conf_dir:         /etc/artemis/
    localdata_path:         /tftpboot/
-   logfilepath:            /usr/share/artemis/test_data/output/
-   image_dir:              /mnt/images/
+   # ss5 2008-09-18
+   #image_dir:              /mnt/images/
+   image_dir:              /data/bancroft/artemis/live/repository/images/
    nfskernel_path:         /tftpboot/
-   nfsroot:                165.204.85.14:/vol/osrc_data/nfsroot/installation_base/
-   output_dir:             /usr/share/artemis/output/
+   # ss5 2008-09-18
+   #nfsroot:                165.204.85.14:/vol/osrc_data/nfsroot/installation_base/
+   nfsroot:                165.204.85.71:/data/bancroft/artemis/live/nfsroot/installation_base/
+   output_dir:             /data/bancroft/artemis/live/output/
+   # ss5 sschwigo 2009-09-18 TODO: replace /mnt/output with /data/bancroft/...
    output_target:          /mnt/output/
-   package_dir:            /usr/share/artemis/packages/
-   patchdir:               patches/
+   package_dir:            /data/bancroft/artemis/live/repository/packages/
    # Base directories to search for the test programs
-   testprog_path:          /usr/share/artemis/testprogram/
+   testprog_path:          /data/bancroft/artemis/live/testprogram/
 
 # basenames of files
 files:
