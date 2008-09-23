@@ -52,8 +52,10 @@ database:
 # a communication channel between MCP and Webcontrol other than the
 # database.
 times:
-   poll_intervall:  30
-   boot_timeout: 600
+#   poll_intervall:  30
+#   boot_timeout: 600
+   poll_intervall:  10
+   boot_timeout: 120
 
 # paths for files written by MCP
 # TODO: "written by MCP" not enough. also "consumed by PRC". Correct?
