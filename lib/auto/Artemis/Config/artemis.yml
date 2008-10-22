@@ -23,6 +23,7 @@ tftp_server_address:     165.204.85.71
 #report_server:           165.204.85.71
 report_server:           165.204.85.119
 report_port:             7357
+report_api_port:         7358
 osrc_rst:                /public/bin/osrc_rst_no_menu
 
 # 'db' is DEPRECATED in favor of simpler 'database'
@@ -140,7 +141,7 @@ development:
       dsn:        dbi:mysql:dbname=testrundb_dev
       username:   artemis
       password:   artemis
-    ReportsDB:
+    ReporsDB:
       dsn:        dbi:mysql:dbname=reportsdb_dev
       username:   artemis
       password:   artemis
