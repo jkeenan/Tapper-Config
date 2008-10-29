@@ -21,7 +21,7 @@ Version 0.01
 
 =cut
 
-our $VERSION = '2.010019';
+our $VERSION = '2.010020';
 
 =head1 SYNOPSIS
 
@@ -55,10 +55,13 @@ This program is released under the following license: restrictive
 
         sub _getenv
         {
+                # Migration help during switch from default-devel to default-live
+                die "Use of ENV{ARTEMIS_LIVE} is deprecated, use ARTEMIS_DEVELOPMENT=1" if $ENV{ARTEMIS_LIVE};
+
                 return
-                    $ENV{ARTEMIS_LIVE} ? 'live'
+                    $ENV{ARTEMIS_DEVELOPMENT} ? 'development'
                         : $ENV{HARNESS_ACTIVE} ? 'test'
-                            : 'development';
+                            : 'live';
         }
 
         # TODO: automatically recognize context switch
