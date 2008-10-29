@@ -57,6 +57,7 @@ times:
 #   boot_timeout: 600
    poll_intervall:  10
    boot_timeout: 1200
+   reschedule_time: 3600
 
 # paths for files written by MCP
 # TODO: "written by MCP" not enough. also "consumed by PRC". Correct?
@@ -108,8 +109,8 @@ patchopt:
 # This variable controls whether minor errors generate warnings (and
 # MCP tries to do something smart to continue) or whether such errors
 # lead to failure of the script. True chooses the second alternative.
-
 strict_checking: 1
+
 conserver: 
    server: gutrune.amd.com
    port:   7782
