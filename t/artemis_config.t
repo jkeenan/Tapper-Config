@@ -5,9 +5,14 @@ use warnings;
 
 use Test::More;
 
-plan tests => 12;
+plan tests => 11;
 
 use Artemis::Config;
+
+
+# test
+
+local $ENV{ARTEMIS_DEVELOPMENT} = 1; # like in typical development environment
 
 is(Artemis::Config->subconfig->{test_value},              'test',         "[context: test] base configs");
 is(Artemis::Config->subconfig->{test_value_only_in_base}, 'only_in_base', "[context: test] base config");
@@ -16,18 +21,23 @@ like(Artemis::Config->subconfig->{files}{log4perl_cfg}, qr{auto/Artemis/Config/l
 is_deeply(Artemis::Config->subconfig->{patchopt}, [ '-p1' ], "[context: test] patchopt");
 
 {
-        local $ENV{ARTEMIS_LIVE} = 1;
+        # live
+
+        local $ENV{ARTEMIS_DEVELOPMENT} = 0;
+        local $ENV{HARNESS_ACTIVE} = 0;
+
         Artemis::Config->_switch_context();
         is(Artemis::Config->subconfig->{test_value},              'live',         "[context: live] Subconfig");
         is(Artemis::Config->subconfig->{test_value_only_in_base}, 'only_in_base', "[context: live] base config");
         like(Artemis::Config->subconfig->{files}{log4perl_cfg}, qr{auto/Artemis/Config/log4perl.cfg}, "[context: live] log4perl config file fullpath");
 }
-Artemis::Config->_switch_context();
-
-isnt ($ENV{ARTEMIS_LIVE}, 1, "ARTEMIS_LIVE set back");
 
 {
+        #development
+
         local $ENV{HARNESS_ACTIVE} = 0;
+        local $ENV{ARTEMIS_DEVELOPMENT} = 1;
+
         Artemis::Config->_switch_context();
         is(Artemis::Config->subconfig->{test_value}, 'development', "[context: development] Subconfig");
         is(Artemis::Config->subconfig->{test_value_only_in_base}, 'only_in_base', "[context: development] base config");

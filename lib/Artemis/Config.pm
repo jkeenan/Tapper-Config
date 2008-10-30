@@ -21,7 +21,7 @@ Version 0.01
 
 =cut
 
-our $VERSION = '2.010020';
+our $VERSION = '2.010021';
 
 =head1 SYNOPSIS
 
@@ -56,11 +56,11 @@ This program is released under the following license: restrictive
         sub _getenv
         {
                 # Migration help during switch from default-devel to default-live
-                die "Use of ENV{ARTEMIS_LIVE} is deprecated, use ARTEMIS_DEVELOPMENT=1" if $ENV{ARTEMIS_LIVE};
+                die "Use of ENV{ARTEMIS_LIVE} is deprecated, use ARTEMIS_DEVELOPMENT=1" if ($ENV{ARTEMIS_LIVE} and not $ENV{HARNESS_ACTIVE});
 
                 return
-                    $ENV{ARTEMIS_DEVELOPMENT} ? 'development'
-                        : $ENV{HARNESS_ACTIVE} ? 'test'
+                    $ENV{HARNESS_ACTIVE} ? 'test'
+                        : $ENV{ARTEMIS_DEVELOPMENT} ? 'development'
                             : 'live';
         }
 
@@ -72,7 +72,6 @@ This program is released under the following license: restrictive
                 my $env = shift // _getenv();
 
                 return unless $env =~ /^test|live|development$/;
-
 
                 my $yaml = slurp module_file('Artemis::Config', 'artemis.yml');
                 $Config  = Load($yaml);
