@@ -1,6 +1,18 @@
 #! /bin/bash
 
+EXECDIR=$(dirname $0)
 DISTFILES='Artemis*-*.*.tar.gz '
+$EXECDIR/../../Artemis/scripts/artemis_version_increment.pl $EXECDIR/../lib/Artemis/Config.pm
+cd $EXECDIR/..
+
+if [[ -e MANIFEST ]]
+then
+  rm MANIFEST
+fi
+./Build manifest || exit -1
+
+perl Build.PL || exit -1
+./Build dist || exit -1
 
 # -----------------------------------------------------------------
 # It is important to not overwrite existing files.
