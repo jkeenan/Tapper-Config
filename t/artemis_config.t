@@ -5,7 +5,7 @@ use warnings;
 
 use Test::More;
 
-plan tests => 11;
+plan tests => 10;
 
 use Artemis::Config;
 
@@ -18,7 +18,6 @@ is(Artemis::Config->subconfig->{test_value},              'test',         "[cont
 is(Artemis::Config->subconfig->{test_value_only_in_base}, 'only_in_base', "[context: test] base config");
 is(Artemis::Config->subconfig->{test}{files}{log4perl_cfg}, 'log4perl_test.cfg', "[context: test] log4perl config file");
 like(Artemis::Config->subconfig->{files}{log4perl_cfg}, qr{auto/Artemis/Config/log4perl_test.cfg}, "[context: test] log4perl config file fullpath");
-is_deeply(Artemis::Config->subconfig->{patchopt}, [ '-p1' ], "[context: test] patchopt");
 
 {
         # live
