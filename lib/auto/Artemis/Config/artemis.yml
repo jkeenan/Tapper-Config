@@ -118,6 +118,8 @@ development:
       dsn:        dbi:mysql:dbname=hardwaredb_dev
       username:   artemis
       password:   artemis
+  files:
+    log4perl_cfg: log4perl_test.cfg
 
 
 # special test environment
