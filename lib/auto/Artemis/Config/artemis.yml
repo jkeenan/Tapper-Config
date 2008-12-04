@@ -125,6 +125,7 @@ development:
 # special test environment
 test:
   test_value:     test
+  report_server:  localhost
   database:
     TestrunDB:
       dsn:        dbi:SQLite:dbname=t/artemis_schema_testrundb_test.sqlite
@@ -140,3 +141,10 @@ test:
       password:   ''
   files:
     log4perl_cfg: log4perl_test.cfg
+  times:
+   poll_intervall:  10
+   boot_timeout: 5
+   reschedule_time: 3600
+   test_runtime_default: 5
+  paths:
+    output_dir: t/file_upload/
