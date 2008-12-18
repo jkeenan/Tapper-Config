@@ -18,6 +18,7 @@ name: Artemis
 
 test_value:              base
 test_value_only_in_base: only_in_base
+
 mcp_port:                1337
 mcp_host:                165.204.85.71
 tftp_server_address:     165.204.85.71
@@ -25,8 +26,10 @@ tftp_server_address:     165.204.85.71
 report_server:           bancroft
 report_port:             7357
 report_api_port:         7358
-osrc_rst:                /public/bin/osrc_rst_no_menu
 prc_nfs_server:          bancroft
+
+osrc_rst:                /public/bin/osrc_rst_no_menu
+install_artemis_toolchain: ~
 
 # 'db' is DEPRECATED in favor of simpler 'database'
 db:
@@ -98,6 +101,7 @@ live:
 
 # explicit development environment
 development:
+  install_artemis_toolchain: 1
   paths:
     nfsroot:                165.204.85.71:/data/bancroft/artemis/development/nfsroot/installation_base/
     output_dir:             /data/bancroft/artemis/development/output/
