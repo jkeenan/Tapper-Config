@@ -78,7 +78,10 @@ paths:
 # basenames of files
 files:
   log4perl_cfg: log4perl.cfg
-  artemis_package: artemisutils/artemis.tgz
+  artemis_package:
+    linux64: artemisutils/opt-artemis64.tar.gz
+    linux32: artemisutils/opt-artemis32.tar.gz
+
 
 conserver: 
    server: gutrune.amd.com
