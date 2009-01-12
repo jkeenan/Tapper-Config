@@ -62,7 +62,7 @@ times:
 paths:
    # directory to mount the test root image to
    base_dir:               /mnt/target/
-   grubpath:               /data/bancroft/artemis/live/externalhosts/loge/artemis_conf/
+   grubpath:               /data/bancroft/artemis/live/configs/tftpboot
    guest_mount_dir:        /mnt/guests/
    localdata_path:         /tftpboot/
    image_dir:              /data/bancroft/artemis/live/repository/images/
