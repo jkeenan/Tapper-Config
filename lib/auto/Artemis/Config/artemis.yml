@@ -127,6 +127,9 @@ development:
       password:   artemis
   files:
     log4perl_cfg: log4perl_test.cfg
+    artemis_package:
+      linux64: artemisutils/opt-artemis64_devel.tar.gz
+      linux32: artemisutils/opt-artemis32_devel.tar.gz
 
 
 # special test environment
