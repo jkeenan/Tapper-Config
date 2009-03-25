@@ -20,9 +20,9 @@ test_value:              base
 test_value_only_in_base: only_in_base
 
 mcp_port:                1337
-mcp_host:                165.204.85.71
-tftp_server_address:     165.204.85.71
-#report_server:           165.204.85.71
+mcp_host:                165.204.15.71
+tftp_server_address:     165.204.15.71
+#report_server:           165.204.15.71
 report_server:           bancroft
 report_port:             7357
 report_api_port:         7358
@@ -67,7 +67,7 @@ paths:
    localdata_path:         /tftpboot/
    image_dir:              /data/bancroft/artemis/live/repository/images/
    nfskernel_path:         /tftpboot/
-   nfsroot:                165.204.85.71:/data/bancroft/artemis/live/nfsroot/installation_base/
+   nfsroot:                165.204.15.71:/data/bancroft/artemis/live/nfsroot/installation_base/
    output_dir:             /data/bancroft/artemis/live/output/
    package_dir:            /data/bancroft/artemis/live/repository/packages/
    prc_nfs_mountdir:       /data/bancroft/
@@ -105,13 +105,13 @@ live:
 development:
   install_artemis_toolchain: 1
   paths:
-    nfsroot:                165.204.85.71:/data/bancroft/artemis/development/nfsroot/installation_base/
+    nfsroot:                165.204.15.71:/data/bancroft/artemis/development/nfsroot/installation_base/
     output_dir:             /data/bancroft/artemis/development/output/
 
   test_value:          development
-  mcp_host:            165.204.85.37
+  mcp_host:            165.204.15.37
   report_server:       bascha
-  tftp_server_address: 165.204.85.37
+  tftp_server_address: 165.204.15.37
   database:
     TestrunDB:
       dsn:        dbi:mysql:dbname=testrundb_dev
