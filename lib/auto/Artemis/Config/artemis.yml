@@ -75,6 +75,9 @@ paths:
    # Base directories to search for the test programs
    # not needed for test suites but maybe for user provided tests
    testprog_path:          /data/bancroft/artemis/live/testprogram/
+   autoinstall:
+     grubfiles:            /data/bancroft/artemis/live/repository/autoinstall/grubfiles/
+   
 
 # basenames of files
 files:
@@ -160,3 +163,4 @@ test:
    test_runtime_default: 5
   paths:
     output_dir: t/file_upload/
+    grubpath: /tmp/
