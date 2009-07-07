@@ -164,3 +164,5 @@ test:
   paths:
     output_dir: t/file_upload/
     grubpath: /tmp/
+    autoinstall:
+      grubfiles: t/misc_files/
