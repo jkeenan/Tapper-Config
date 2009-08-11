@@ -110,7 +110,7 @@ development:
   install_artemis_toolchain: 1
   paths:
     nfsroot:                165.204.15.71:/data/bancroft/artemis/development/nfsroot/installation_base/
-    output_dir:             /data/bancroft/artemis/development/output/
+    output_dir:             /tmp/output/
 
   test_value:          development
   mcp_host:            165.204.15.37
