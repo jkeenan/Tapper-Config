@@ -72,6 +72,7 @@ paths:
    output_dir:             /data/bancroft/artemis/live/output/
    package_dir:            /data/bancroft/artemis/live/repository/packages/
    prc_nfs_mountdir:       /data/bancroft/
+   temare_path:            /home/artemis/temare
    # Base directories to search for the test programs
    # not needed for test suites but maybe for user provided tests
    testprog_path:          /data/bancroft/artemis/live/testprogram/
@@ -165,5 +166,6 @@ test:
   paths:
     output_dir: t/file_upload/
     grubpath: /tmp/
+    temare_path:            t/misc_files/bin/
     autoinstall:
       grubfiles: t/misc_files/
