@@ -112,6 +112,7 @@ development:
   paths:
     nfsroot:                165.204.15.71:/data/bancroft/artemis/development/nfsroot/installation_base/
     output_dir:             /tmp/output/
+    temare_path: /data/bancroft/artemis/development/tools/temare
 
   test_value:          development
   mcp_host:            165.204.15.37
@@ -135,8 +136,6 @@ development:
     artemis_package:
       linux64: artemisutils/opt-artemis64_devel.tar.gz
       linux32: artemisutils/opt-artemis32_devel.tar.gz
-  paths:
-    temare_path: /data/bancroft/artemis/development/tools/temare
 
 # special test environment
 test:
