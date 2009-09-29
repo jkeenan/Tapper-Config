@@ -12,6 +12,7 @@ my $builder = Module::Build->new
      build_requires => {
                         'Test::More'    => 0,
                         'Artemis::Test' => '2.010005',
+                        'File::Slurp'   => 0,
                        },
      requires => {
                   'Hash::Merge::Simple' => 0,
