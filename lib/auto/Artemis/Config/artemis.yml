@@ -112,7 +112,8 @@ development:
   paths:
     nfsroot:                165.204.15.71:/data/bancroft/artemis/development/nfsroot/installation_base/
     output_dir:             /tmp/output/
-    temare_path: /data/bancroft/artemis/development/tools/temare
+    grubpath:               /tftpboot
+    temare_path:            /data/bancroft/artemis/development/tools/temare
 
   test_value:          development
   mcp_host:            165.204.15.37
@@ -166,6 +167,7 @@ test:
   paths:
     output_dir: t/file_upload/
     grubpath: /tmp/
+    localdata_path: /tmp/
     temare_path:            t/misc_files/bin/
     autoinstall:
       grubfiles: t/misc_files/
