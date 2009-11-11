@@ -40,15 +40,15 @@ db:
 
 database:
   TestrunDB:
-    dsn:        dbi:mysql:dbname=testrundb
+    dsn:        dbi:mysql:dbname=testrundb;mysql_use_result=1
     username:   artemis
     password:   artemis
   ReportsDB:
-    dsn:        dbi:mysql:dbname=reportsdb
+    dsn:        dbi:mysql:dbname=reportsdb;mysql_use_result=1
     username:   artemis
     password:   artemis
   HardwareDB:
-    dsn:        dbi:mysql:dbname=hardwaredb
+    dsn:        dbi:mysql:dbname=hardwaredb;mysql_use_result=1
     username:   hardware
     password:   myhardware
 
@@ -120,15 +120,15 @@ development:
   tftp_server_address: 165.204.15.37
   database:
     TestrunDB:
-      dsn:        dbi:mysql:dbname=testrundb_dev
+      dsn:        dbi:mysql:dbname=testrundb_dev;mysql_use_result=1
       username:   artemis
       password:   artemis
     ReportsDB:
-      dsn:        dbi:mysql:dbname=reportsdb_dev
+      dsn:        dbi:mysql:dbname=reportsdb_dev;mysql_use_result=1
       username:   artemis
       password:   artemis
     HardwareDB:
-      dsn:        dbi:mysql:dbname=hardwaredb_dev
+      dsn:        dbi:mysql:dbname=hardwaredb_dev;mysql_use_result=1
       username:   artemis
       password:   artemis
   files:
