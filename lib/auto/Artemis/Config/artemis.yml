@@ -26,6 +26,7 @@ tftp_server_address:     165.204.15.71
 report_server:           bancroft
 report_port:             7357
 report_api_port:         7358
+sync_port:               1337
 prc_nfs_server:          bancroft
 
 osrc_rst:                /public/bin/osrc_rst_no_menu
@@ -82,7 +83,7 @@ paths:
 
 # basenames of files
 files:
-  log4perl_cfg: log4perl.cfg
+  log4perl_cfg: log4perl.cfg           # not used in PRC
   artemis_package:
     linux64: artemisutils/opt-artemis64.tar.gz
     linux32: artemisutils/opt-artemis32.tar.gz
@@ -143,6 +144,7 @@ test:
   report_server:   localhost
   report_port:     17357
   report_api_port: 17358
+  sync_port:       17359
   database:
     TestrunDB:
       dsn:        dbi:SQLite:dbname=t/artemis_schema_testrundb_test.sqlite
@@ -157,7 +159,7 @@ test:
       username:   ''
       password:   ''
   files:
-    log4perl_cfg: log4perl_test.cfg
+    log4perl_cfg: log4perl_test.cfg            # not used in PRC
   times:
    poll_intervall:  10
    boot_timeout: 5
