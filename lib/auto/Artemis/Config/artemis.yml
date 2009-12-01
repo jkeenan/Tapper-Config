@@ -65,6 +65,7 @@ paths:
    # directory to mount the test root image to
    base_dir:               /mnt/target/
    grubpath:               /data/bancroft/artemis/live/configs/tftpboot
+   grubpath:               /data/bancroft/artemis/live/configs/tftpboot
    guest_mount_dir:        /mnt/guests/
    localdata_path:         /tftpboot/
    image_dir:              /data/bancroft/artemis/live/repository/images/
@@ -78,6 +79,7 @@ paths:
    # not needed for test suites but maybe for user provided tests
    testprog_path:          /data/bancroft/artemis/live/testprogram/
    sync_path:              /data/bancroft/artemis/live/sync/
+   use_case_path:          /data/bancroft/artemis/live/configs/
    autoinstall:
      grubfiles:            /data/bancroft/artemis/live/repository/autoinstall/grubfiles/
    
