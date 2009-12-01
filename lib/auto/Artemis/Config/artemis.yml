@@ -78,7 +78,7 @@ paths:
    # Base directories to search for the test programs
    # not needed for test suites but maybe for user provided tests
    testprog_path:          /data/bancroft/artemis/live/testprogram/
-   use_case_path:          /data/bancroft/artemis/live/configs/
+   use_case_path:          /data/bancroft/artemis/live/configs/use_cases/
    autoinstall:
      grubfiles:            /data/bancroft/artemis/live/repository/autoinstall/grubfiles/
    
