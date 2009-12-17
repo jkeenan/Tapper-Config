@@ -18,6 +18,7 @@ my $builder = Module::Build->new
                   'Hash::Merge::Simple' => 0,
                   'File::ShareDir'      => 0,
                   'perl'                => '5.010',
+                  'YAML::Syck'          => 0,
                  },
      add_to_cleanup      => [ 'Artemis-Config-*' ],
     );
