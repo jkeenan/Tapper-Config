@@ -62,29 +62,23 @@ times:
 
 # configurable files paths
 paths:
-   # directory to mount the test root image to
+   autoinstall:
+     grubfiles:            /data/bancroft/artemis/live/repository/autoinstall/grubfiles/
    base_dir:               /mnt/target/
-   grubpath:               /data/bancroft/artemis/live/configs/tftpboot
-   grubpath:               /data/bancroft/artemis/live/configs/tftpboot
+   config_path:            /data/bancroft/artemis/live/configs/
    guest_mount_dir:        /mnt/guests/
-   localdata_path:         /tftpboot/
    image_dir:              /data/bancroft/artemis/live/repository/images/
-   nfs_mount_dir:          /mnt/nfs
+   localdata_path:         /tftpboot/
+   metareport_path:        /data/bancroft/artemis/live/metareports/
    nfskernel_path:         /tftpboot/
+   nfs_mount_dir:          /mnt/nfs
    nfsroot:                165.204.15.71:/data/bancroft/artemis/live/nfsroot/installation_base/
    output_dir:             /data/bancroft/artemis/live/output/
    package_dir:            /data/bancroft/artemis/live/repository/packages/
    prc_nfs_mountdir:       /data/bancroft/
-   temare_path:            /home/artemis/temare
-   # Base directories to search for the test programs
-   # not needed for test suites but maybe for user provided tests
-   testprog_path:          /data/bancroft/artemis/live/testprogram/
    sync_path:              /data/bancroft/artemis/live/sync/
-   config_path:            /data/bancroft/artemis/live/configs/
-   metareport_path:        /data/bancroft/artemis/live/metareports/
-   autoinstall:
-     grubfiles:            /data/bancroft/artemis/live/repository/autoinstall/grubfiles/
-   
+   temare_path:            /home/artemis/temare
+   testprog_path:          /data/bancroft/artemis/live/testprogram/
 
 # basenames of files
 files:
