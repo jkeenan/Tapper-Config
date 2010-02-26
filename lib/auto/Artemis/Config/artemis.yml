@@ -67,6 +67,7 @@ paths:
    base_dir:               /mnt/target/
    config_path:            /data/bancroft/artemis/live/configs/
    guest_mount_dir:        /mnt/guests/
+   grubpath:               /data/bancroft/artemis/live/configs/tftpboot
    image_dir:              /data/bancroft/artemis/live/repository/images/
    localdata_path:         /tftpboot/
    metareport_path:        /data/bancroft/artemis/live/metareports/
@@ -79,6 +80,7 @@ paths:
    sync_path:              /data/bancroft/artemis/live/sync/
    temare_path:            /home/artemis/temare
    testprog_path:          /data/bancroft/artemis/live/testprogram/
+   use_case_path:          /data/bancroft/artemis/live/configs/use_cases/
 
 # basenames of files
 files:
