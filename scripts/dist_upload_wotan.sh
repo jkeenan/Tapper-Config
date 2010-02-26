@@ -23,9 +23,9 @@ perl Build.PL || exit -1
 
 echo ""
 echo '----- upload ---------------------------------------------------'
-rsync -vv --progress --ignore-existing ${DISTFILES} artemis@wotan:/home/artemis/CPANSITE/CPAN/authors/id/A/AR/ARTEMIS/
+rsync -vv --progress --ignore-existing ${DISTFILES} artemis@bancroft:/home/artemis/CPANSITE/CPAN/authors/id/A/AR/ARTEMIS/
 
 echo ""
 echo '----- re-index -------------------------------------------------'
-ssh artemis@wotan /home/artemis/perl510/bin/cpansite -vl index /home/artemis/CPANSITE/CPAN/
-ssh artemis@wotan /home/artemis/perl510/bin/cpan Artemis::Config
+ssh artemis@bancroft /home/artemis/perl510/bin/cpansite -vl index /home/artemis/CPANSITE/CPAN/
+ssh artemis@bancroft /home/artemis/perl510/bin/cpan Artemis::Config
