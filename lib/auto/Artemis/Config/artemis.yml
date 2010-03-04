@@ -88,7 +88,7 @@ files:
   artemis_package:
     linux64: artemisutils/opt-artemis64.tar.gz
     linux32: artemisutils/opt-artemis32.tar.gz
-
+    windows: artemisutils/wintest.tar.gz
 
 conserver: 
    server: gutrune.amd.com
