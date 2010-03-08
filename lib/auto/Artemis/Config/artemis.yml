@@ -55,7 +55,7 @@ database:
 
 times:
    poll_intervall:  10
-   boot_timeout: 1200
+   boot_timeout: 3600
    reschedule_time: 3600
    test_runtime_default: 7200
    installer_timeout: 3600
