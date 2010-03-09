@@ -85,6 +85,7 @@ paths:
 # basenames of files
 files:
   log4perl_cfg: log4perl.cfg           # not used in PRC
+  windows_test_image: osko:/export/image_files/official_testing/windows_test.img
   artemis_package:
     linux64: artemisutils/opt-artemis64.tar.gz
     linux32: artemisutils/opt-artemis32.tar.gz
