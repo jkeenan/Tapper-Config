@@ -58,7 +58,7 @@ times:
    boot_timeout: 3600
    reschedule_time: 3600
    test_runtime_default: 7200
-   installer_timeout: 3600
+   installer_timeout: 7200
 
 # configurable files paths
 paths:
