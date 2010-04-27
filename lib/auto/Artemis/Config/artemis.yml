@@ -77,6 +77,7 @@ paths:
    output_dir:             /data/bancroft/artemis/live/output/
    package_dir:            /data/bancroft/artemis/live/repository/packages/
    prc_nfs_mountdir:       /data/bancroft/
+   simnow_path:            /opt/artemis/simnow-linux64-4.6.1/
    sync_path:              /data/bancroft/artemis/live/sync/
    temare_path:            /home/artemis/temare
    testprog_path:          /data/bancroft/artemis/live/testprogram/
@@ -90,6 +91,9 @@ files:
     linux64: artemisutils/opt-artemis64.tar.gz
     linux32: artemisutils/opt-artemis32.tar.gz
     windows: artemisutils/wintest.tar.gz
+  simnow_installer: /opt/artemis/bin/artemis-installer-simnow.pl
+  simnow_config: /tmp/simnow.yml
+  simnow_console: /root/.simnow/com1/simnow_out
 
 conserver: 
    server: gutrune.amd.com
