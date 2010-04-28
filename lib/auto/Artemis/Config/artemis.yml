@@ -76,6 +76,7 @@ paths:
    nfsroot:                165.204.15.71:/data/bancroft/artemis/live/nfsroot/installation_base/
    output_dir:             /data/bancroft/artemis/live/output/
    package_dir:            /data/bancroft/artemis/live/repository/packages/
+   pids_path:              /var/run
    prc_nfs_mountdir:       /data/bancroft/
    simnow_path:            /opt/artemis/simnow-linux64-4.6.1/
    sync_path:              /data/bancroft/artemis/live/sync/
