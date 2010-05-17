@@ -87,6 +87,7 @@ paths:
 # basenames of files
 files:
   log4perl_cfg: log4perl.cfg           # not used in PRC
+  receiver_log4perl_cfg: receiver_log4perl.cfg
   windows_test_image: osko:/export/image_files/official_testing/windows_test.img
   artemis_package:
     linux64: artemisutils/opt-artemis64.tar.gz
@@ -142,6 +143,7 @@ development:
       password:   artemis
   files:
     log4perl_cfg: log4perl_test.cfg
+    receiver_log4perl_cfg: receiver_log4perl_test.cfg
     artemis_package:
       linux64: artemisutils/opt-artemis64_devel.tar.gz
       linux32: artemisutils/opt-artemis32_devel.tar.gz
@@ -168,6 +170,7 @@ test:
       password:   ''
   files:
     log4perl_cfg: log4perl_test.cfg            # not used in PRC
+    receiver_log4perl_cfg: receiver_log4perl_test.cfg
   times:
    poll_intervall:  10
    boot_timeout: 5
