@@ -78,7 +78,7 @@ paths:
    package_dir:            /data/bancroft/artemis/live/repository/packages/
    pids_path:              /var/run
    prc_nfs_mountdir:       /data/bancroft/
-   simnow_path:            /opt/artemis/simnow-linux64-4.6.1/
+   simnow_path:            /opt/artemis/simnow-linux64/
    sync_path:              /data/bancroft/artemis/live/sync/
    temare_path:            /home/artemis/temare
    testprog_path:          /data/bancroft/artemis/live/testprogram/
