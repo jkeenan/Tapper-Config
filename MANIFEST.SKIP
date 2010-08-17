@@ -11,3 +11,4 @@ artemis_reportsdb_development.sqlite
 xyz.html
 xyz2.html
 
+^MYMETA.yml$
