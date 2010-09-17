@@ -123,6 +123,7 @@ development:
     output_dir:             /tmp/output/
     temare_path:            /data/bancroft/artemis/development/tools/temare
     sync_path:              /data/bancroft/artemis/development/sync/
+    config_path:            /data/bancroft/artemis/development/configs/
 
   test_value:          development
   mcp_host:            165.204.15.37
