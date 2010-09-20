@@ -59,6 +59,7 @@ times:
    reschedule_time: 3600
    test_runtime_default: 7200
    installer_timeout: 7200
+   receiver_timeout: 86400
 
 # configurable files paths
 paths:
@@ -177,6 +178,7 @@ test:
    boot_timeout: 5
    reschedule_time: 3600
    test_runtime_default: 5
+   receiver_timeout: 5
   paths:
     output_dir: t/file_upload/
     grubpath: /tmp/
