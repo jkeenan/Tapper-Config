@@ -184,5 +184,6 @@ test:
     grubpath: /tmp/
     localdata_path: /tmp/
     temare_path:            t/misc_files/bin/
+    use_case_path:          root/mpc/
     autoinstall:
       grubfiles: t/misc_files/
