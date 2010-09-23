@@ -59,6 +59,7 @@ times:
    reschedule_time: 3600
    test_runtime_default: 7200
    installer_timeout: 7200
+   receiver_timeout: 86400
 
 # configurable files paths
 paths:
@@ -123,6 +124,7 @@ development:
     output_dir:             /tmp/output/
     temare_path:            /data/bancroft/artemis/development/tools/temare
     sync_path:              /data/bancroft/artemis/development/sync/
+    config_path:            /data/bancroft/artemis/development/configs/
 
   test_value:          development
   mcp_host:            165.204.15.37
@@ -176,10 +178,12 @@ test:
    boot_timeout: 5
    reschedule_time: 3600
    test_runtime_default: 5
+   receiver_timeout: 5
   paths:
     output_dir: t/file_upload/
     grubpath: /tmp/
     localdata_path: /tmp/
     temare_path:            t/misc_files/bin/
+    use_case_path:          root/mpc/
     autoinstall:
       grubfiles: t/misc_files/
