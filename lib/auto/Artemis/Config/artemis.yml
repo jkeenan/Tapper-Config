@@ -125,6 +125,7 @@ development:
     temare_path:            /data/bancroft/artemis/development/tools/temare
     sync_path:              /data/bancroft/artemis/development/sync/
     config_path:            /data/bancroft/artemis/development/configs/
+    use_case_path:          /data/bancroft/artemis/development/configs/use_cases/
 
   test_value:          development
   mcp_host:            165.204.15.37
