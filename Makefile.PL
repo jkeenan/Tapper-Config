@@ -3,7 +3,7 @@ use warnings;
 
 use inc::Module::Install;
 
-name     'Artemis-Cmd';
+name     'Artemis-Config';
 all_from 'lib/Artemis/Config.pm';
 author   'OSRC SysInt Team <osrc-sysint@elbe.amd.com>';
 
