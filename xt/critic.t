@@ -1,2 +1,2 @@
 use Test::Perl::Critic;
-all_critic_ok();
+all_critic_ok("lib");
