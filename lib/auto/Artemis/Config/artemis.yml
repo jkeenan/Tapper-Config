@@ -19,6 +19,9 @@ name: Artemis
 test_value:              base
 test_value_only_in_base: only_in_base
 
+# WebGUI currently offers only one queue for new testruns
+new_testrun_queue: AdHoc
+
 # whether Artemis::Reports::API allows mason and TT templates
 reports_enable_mason: 0
 reports_enable_tt: 1
