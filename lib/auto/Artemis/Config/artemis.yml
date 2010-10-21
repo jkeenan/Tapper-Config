@@ -77,7 +77,6 @@ paths:
    image_dir:              /data/bancroft/artemis/live/repository/images/
    localdata_path:         /tftpboot/
    metareport_path:        /data/bancroft/artemis/live/metareports/
-   nfskernel_path:         /tftpboot/
    nfs_mount_dir:          /mnt/nfs
    nfsroot:                165.204.15.71:/data/bancroft/artemis/live/nfsroot/installation_base/
    output_dir:             /data/bancroft/artemis/live/output/
@@ -92,6 +91,7 @@ paths:
 
 # basenames of files
 files:
+  installer_kernel: /tftpboot/bzImage
   log4perl_cfg: log4perl.cfg           # not used in PRC
   receiver_log4perl_cfg: receiver_log4perl.cfg
   windows_test_image: osko:/export/image_files/official_testing/windows_test.img
