@@ -26,7 +26,6 @@ new_testrun_queue: AdHoc
 reports_enable_mason: 0
 reports_enable_tt: 1
 
-mcp_port:                1337
 mcp_host:                165.204.15.71
 tftp_server_address:     165.204.15.71
 #report_server:           165.204.15.71
@@ -71,8 +70,6 @@ times:
 
 # configurable files paths
 paths:
-   autoinstall:
-     grubfiles:            /data/bancroft/artemis/live/repository/autoinstall/grubfiles/
    base_dir:               /mnt/target/
    config_path:            /data/bancroft/artemis/live/configs/
    guest_mount_dir:        /mnt/guests/
