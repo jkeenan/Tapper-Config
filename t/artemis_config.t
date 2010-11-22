@@ -11,9 +11,6 @@ use Artemis::Config;
 
 
 # test
-
-local $ENV{ARTEMIS_DEVELOPMENT} = 1; # like in typical development environment
-
 is(Artemis::Config->subconfig->{test_value},              'test',         "[context: test] base configs");
 is(Artemis::Config->subconfig->{test_value_only_in_base}, 'only_in_base', "[context: test] base config");
 is(Artemis::Config->subconfig->{test}{files}{log4perl_cfg}, 'log4perl_test.cfg', "[context: test] log4perl config file");

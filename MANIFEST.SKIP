@@ -8,7 +8,5 @@ t/artemis_schema_testrundb_test.sqlite
 t/artemis_schema_reportsdb_test.sqlite
 artemis_testrundb_development.sqlite
 artemis_reportsdb_development.sqlite
-xyz.html
-xyz2.html
-
+^Makefile$
 ^MYMETA.yml$

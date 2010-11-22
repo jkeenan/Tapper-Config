@@ -21,7 +21,7 @@ Version 0.01
 
 =cut
 
-our $VERSION = '2.010071';
+our $VERSION = '2.010076';
 
 =head1 SYNOPSIS
 
@@ -47,22 +47,60 @@ This program is released under the following license: restrictive
 =cut
 
 # --- The configuration file is lib/auto/Artemis/Config/artemis.yml ---
-
 {
         # closure to forbid direct access to the config hash
-
         my $Config;
+
+
+
+=head2 default_merge
+
+Merges default values from /etc/artemis into the config. This allows to
+overwrite values given from the config provided with the module. It
+searches for config in the following places.
+* filename given in $ENV{ARTEMIS_CONFIG_FILE}
+* $ENV{HOME}/.artemis.cfg
+* /etc/artemis.cfg
+
+If $ENV{ARTEMIS_CONFIG_FILE} exists it will be used no mather if it
+contains an existing file. If this key does not exists the first file
+found from the list of remaining alternatives is used.
+
+@param hash ref - config
+
+@return hash ref - merged config
+
+=cut
+
+        sub default_merge
+        {
+                my ($config) = @_;
+                my $new_config;
+                if (exists $ENV{ARTEMIS_CONFIG_FILE}) {
+                        eval {
+                                $new_config = LoadFile($ENV{ARTEMIS_CONFIG_FILE});
+                        };
+                        die "Can not load config file '$ENV{ARTEMIS_CONFIG_FILE}': $@\n" if $@;
+                } elsif ( -e "$ENV{HOME}/.artemis.cfg" ) {
+                                $new_config = LoadFile("$ENV{HOME}/.artemis.cfg");
+                } elsif ( -e "/etc/artemis.cfg" ) {
+                        $new_config = LoadFile("/etc/artemis.cfg");
+                } else {
+                        return $config;
+                }
+                $config = merge($config, $new_config);
+                return $config;
+        }
+
 
         sub _getenv
         {
-                # Migration help during switch from default-devel to default-live
-                die "Use of ENV{ARTEMIS_LIVE} is deprecated, use ARTEMIS_DEVELOPMENT=1" if ($ENV{ARTEMIS_LIVE} and not $ENV{HARNESS_ACTIVE});
-
                 return
                     $ENV{HARNESS_ACTIVE} ? 'test'
                         : $ENV{ARTEMIS_DEVELOPMENT} ? 'development'
                             : 'live';
         }
+
 
         # TODO: automatically recognize context switch
         sub _switch_context
@@ -75,6 +113,8 @@ This program is released under the following license: restrictive
 
                 my $yaml = slurp module_file('Artemis::Config', 'artemis.yml');
                 $Config  = Load($yaml);
+                $Config  = default_merge($Config);
+
                 $Config  = merge( $Config, $Config->{$env} );
                 $Config  = _prepare_special_entries( $Config );
         }

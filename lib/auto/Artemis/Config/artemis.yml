@@ -19,7 +19,13 @@ name: Artemis
 test_value:              base
 test_value_only_in_base: only_in_base
 
-mcp_port:                1337
+# WebGUI currently offers only one queue for new testruns
+new_testrun_queue: AdHoc
+
+# whether Artemis::Reports::API allows mason and TT templates
+reports_enable_mason: 0
+reports_enable_tt: 1
+
 mcp_host:                165.204.15.71
 tftp_server_address:     165.204.15.71
 #report_server:           165.204.15.71
@@ -29,7 +35,8 @@ report_api_port:         7358
 sync_port:               1337
 prc_nfs_server:          bancroft
 
-osrc_rst:                /public/bin/osrc_rst_no_menu
+reset_plugin:            OSRC
+reset_plugin_options:
 
 # 'db' is DEPRECATED in favor of simpler 'database'
 db:
@@ -59,11 +66,10 @@ times:
    reschedule_time: 3600
    test_runtime_default: 7200
    installer_timeout: 7200
+   receiver_timeout: 86400
 
 # configurable files paths
 paths:
-   autoinstall:
-     grubfiles:            /data/bancroft/artemis/live/repository/autoinstall/grubfiles/
    base_dir:               /mnt/target/
    config_path:            /data/bancroft/artemis/live/configs/
    guest_mount_dir:        /mnt/guests/
@@ -71,8 +77,6 @@ paths:
    image_dir:              /data/bancroft/artemis/live/repository/images/
    localdata_path:         /tftpboot/
    metareport_path:        /data/bancroft/artemis/live/metareports/
-   nfskernel_path:         /tftpboot/
-   nfs_mount_dir:          /mnt/nfs
    nfsroot:                165.204.15.71:/data/bancroft/artemis/live/nfsroot/installation_base/
    output_dir:             /data/bancroft/artemis/live/output/
    package_dir:            /data/bancroft/artemis/live/repository/packages/
@@ -86,6 +90,7 @@ paths:
 
 # basenames of files
 files:
+  installer_kernel: /tftpboot/bzImage
   log4perl_cfg: log4perl.cfg           # not used in PRC
   receiver_log4perl_cfg: receiver_log4perl.cfg
   windows_test_image: osko:/export/image_files/official_testing/windows_test.img
@@ -123,6 +128,8 @@ development:
     output_dir:             /tmp/output/
     temare_path:            /data/bancroft/artemis/development/tools/temare
     sync_path:              /data/bancroft/artemis/development/sync/
+    config_path:            /data/bancroft/artemis/development/configs/
+    use_case_path:          /data/bancroft/artemis/development/configs/use_cases/
 
   test_value:          development
   mcp_host:            165.204.15.37
@@ -150,11 +157,18 @@ development:
 
 # special test environment
 test:
+# whether Artemis::Reports::API allows mason and TT templates
+  reports_enable_mason: 1
+  reports_enable_tt: 1
+  
   test_value:      test
   report_server:   localhost
   report_port:     17357
   report_api_port: 17358
   sync_port:       17359
+  reset_plugin:    DoNothing
+  reset_plugin_options:
+    some_dummy_return_message: hello-reset
   database:
     TestrunDB:
       dsn:        dbi:SQLite:dbname=t/artemis_schema_testrundb_test.sqlite
@@ -176,10 +190,12 @@ test:
    boot_timeout: 5
    reschedule_time: 3600
    test_runtime_default: 5
+   receiver_timeout: 5
   paths:
     output_dir: t/file_upload/
     grubpath: /tmp/
     localdata_path: /tmp/
     temare_path:            t/misc_files/bin/
+    use_case_path:          root/mpc/
     autoinstall:
       grubfiles: t/misc_files/

@@ -11,3 +11,6 @@ MANIFEST.bak
 MANIFEST
 META.yml
 MYMETA.yml
+inc
+Makefile
+
