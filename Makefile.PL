@@ -14,6 +14,7 @@ build_requires 'Artemis::Test'      => '2.010005';
 build_requires 'File::Slurp'        => 0;
 
 requires 'Hash::Merge::Simple' => 0;
+requires 'File::Slurp'         => 0;
 requires 'File::ShareDir'      => 0;
 requires 'perl'                => '5.010';
 requires 'YAML::Syck'          => 0;
