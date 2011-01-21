@@ -189,6 +189,7 @@ test:
    poll_intervall:  10
    boot_timeout: 5
    reschedule_time: 3600
+   installer_timeout: 3
    test_runtime_default: 5
    receiver_timeout: 5
   paths:
