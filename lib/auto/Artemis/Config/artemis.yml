@@ -89,7 +89,6 @@ paths:
    temare_path:            /home/artemis/temare
    testprog_path:          /data/bancroft/artemis/live/testprogram/
    use_case_path:          /data/bancroft/artemis/live/configs/use_cases/
-   message_receiver_path:  /data/bancroft/artemis/live/configs/use_cases/
 
 
 # basenames of files
