@@ -27,6 +27,7 @@ reports_enable_mason: 0
 reports_enable_tt: 1
 
 mcp_host:                165.204.15.71
+mcp_port:                1337
 tftp_server_address:     165.204.15.71
 #report_server:           165.204.15.71
 report_server:           bancroft
@@ -162,6 +163,7 @@ test:
   reports_enable_tt: 1
   
   test_value:      test
+  mcp_port:        11337
   report_server:   localhost
   report_port:     17357
   report_api_port: 17358
