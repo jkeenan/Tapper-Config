@@ -77,6 +77,7 @@ paths:
    grubpath:               /data/bancroft/artemis/live/configs/tftpboot
    image_dir:              /data/bancroft/artemis/live/repository/images/
    localdata_path:         /tftpboot/
+   message_receiver_path:  /data/bancroft/artemis/live/configs/use_cases/
    metareport_path:        /data/bancroft/artemis/live/metareports/
    nfsroot:                165.204.15.71:/data/bancroft/artemis/live/nfsroot/installation_base/
    output_dir:             /data/bancroft/artemis/live/output/
@@ -88,6 +89,8 @@ paths:
    temare_path:            /home/artemis/temare
    testprog_path:          /data/bancroft/artemis/live/testprogram/
    use_case_path:          /data/bancroft/artemis/live/configs/use_cases/
+   message_receiver_path:  /data/bancroft/artemis/live/configs/use_cases/
+
 
 # basenames of files
 files:
@@ -198,6 +201,7 @@ test:
     output_dir: t/file_upload/
     grubpath: /tmp/
     localdata_path: /tmp/
+    message_receiver_path:  /tmp/
     temare_path:            t/misc_files/bin/
     use_case_path:          root/mpc/
     autoinstall:
