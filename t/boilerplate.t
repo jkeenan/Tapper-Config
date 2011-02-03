@@ -47,5 +47,5 @@ not_in_file_ok(Changes =>
                "placeholder date/time"       => qr(Date/time)
               );
 
-module_boilerplate_ok('lib/Artemis/Config.pm');
+module_boilerplate_ok('lib/Tapper/Config.pm');
 

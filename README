@@ -1,4 +1,4 @@
-Artemis
+Tapper
 
 Automatic Regression Test Environment and Measurement Instrument System
 
@@ -16,7 +16,7 @@ SUPPORT AND DOCUMENTATION
 After installing, you can find documentation for this module with the
 perldoc command.
 
-    perldoc Artemis
+    perldoc Tapper
 
 
 COPYRIGHT AND LICENCE

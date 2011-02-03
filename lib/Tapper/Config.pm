@@ -1,4 +1,4 @@
-package Artemis::Config;
+package Tapper::Config;
 
 use 5.010;
 
@@ -13,7 +13,7 @@ use File::ShareDir 'module_file';
 
 =head1 NAME
 
-Artemis::Config - Offer configuration for all parts running on Artemis host
+Tapper::Config - Offer configuration for all parts running on Tapper host
 
 =head1 VERSION
 
@@ -25,9 +25,9 @@ our $VERSION = '2.010076';
 
 =head1 SYNOPSIS
 
- use Artemis::Config;
- say Artemis::Config->subconfig->{test_value};
- say Artemis::Config->subconfig->{paths}{build_conf_path};
+ use Tapper::Config;
+ say Tapper::Config->subconfig->{test_value};
+ say Tapper::Config->subconfig->{paths}{build_conf_path};
 
 
 =head1 AUTHOR
@@ -46,7 +46,7 @@ This program is released under the following license: restrictive
 
 =cut
 
-# --- The configuration file is lib/auto/Artemis/Config/artemis.yml ---
+# --- The configuration file is lib/auto/Tapper/Config/tapper.yml ---
 {
         # closure to forbid direct access to the config hash
         my $Config;
@@ -55,14 +55,14 @@ This program is released under the following license: restrictive
 
 =head2 default_merge
 
-Merges default values from /etc/artemis into the config. This allows to
+Merges default values from /etc/tapper into the config. This allows to
 overwrite values given from the config provided with the module. It
 searches for config in the following places.
-* filename given in $ENV{ARTEMIS_CONFIG_FILE}
-* $ENV{HOME}/.artemis.cfg
-* /etc/artemis.cfg
+* filename given in $ENV{TAPPER_CONFIG_FILE}
+* $ENV{HOME}/.tapper.cfg
+* /etc/tapper.cfg
 
-If $ENV{ARTEMIS_CONFIG_FILE} exists it will be used no mather if it
+If $ENV{TAPPER_CONFIG_FILE} exists it will be used no mather if it
 contains an existing file. If this key does not exists the first file
 found from the list of remaining alternatives is used.
 
@@ -76,15 +76,15 @@ found from the list of remaining alternatives is used.
         {
                 my ($config) = @_;
                 my $new_config;
-                if (exists $ENV{ARTEMIS_CONFIG_FILE}) {
+                if (exists $ENV{TAPPER_CONFIG_FILE}) {
                         eval {
-                                $new_config = LoadFile($ENV{ARTEMIS_CONFIG_FILE});
+                                $new_config = LoadFile($ENV{TAPPER_CONFIG_FILE});
                         };
-                        die "Can not load config file '$ENV{ARTEMIS_CONFIG_FILE}': $@\n" if $@;
-                } elsif ( -e "$ENV{HOME}/.artemis.cfg" ) {
-                                $new_config = LoadFile("$ENV{HOME}/.artemis.cfg");
-                } elsif ( -e "/etc/artemis.cfg" ) {
-                        $new_config = LoadFile("/etc/artemis.cfg");
+                        die "Can not load config file '$ENV{TAPPER_CONFIG_FILE}': $@\n" if $@;
+                } elsif ( -e "$ENV{HOME}/.tapper.cfg" ) {
+                                $new_config = LoadFile("$ENV{HOME}/.tapper.cfg");
+                } elsif ( -e "/etc/tapper.cfg" ) {
+                        $new_config = LoadFile("/etc/tapper.cfg");
                 } else {
                         return $config;
                 }
@@ -97,7 +97,7 @@ found from the list of remaining alternatives is used.
         {
                 return
                     $ENV{HARNESS_ACTIVE} ? 'test'
-                        : $ENV{ARTEMIS_DEVELOPMENT} ? 'development'
+                        : $ENV{TAPPER_DEVELOPMENT} ? 'development'
                             : 'live';
         }
 
@@ -105,13 +105,13 @@ found from the list of remaining alternatives is used.
         # TODO: automatically recognize context switch
         sub _switch_context
         {
-                shift if @_ && $_[0] && $_[0] eq 'Artemis::Config'; # throw away class if called as method
+                shift if @_ && $_[0] && $_[0] eq 'Tapper::Config'; # throw away class if called as method
 
                 my $env = shift // _getenv();
 
                 return unless $env =~ /^test|live|development$/;
 
-                my $yaml = slurp module_file('Artemis::Config', 'artemis.yml');
+                my $yaml = slurp module_file('Tapper::Config', 'tapper.yml');
                 $Config  = Load($yaml);
                 $Config  = default_merge($Config);
 
@@ -122,7 +122,7 @@ found from the list of remaining alternatives is used.
         sub _prepare_special_entries {
                 my ($Config) = @_;
 
-                $Config->{files}{log4perl_cfg} = module_file('Artemis::Config', $Config->{files}{log4perl_cfg});
+                $Config->{files}{log4perl_cfg} = module_file('Tapper::Config', $Config->{files}{log4perl_cfg});
                 return $Config;
         }
 
