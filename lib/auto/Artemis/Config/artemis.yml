@@ -71,6 +71,8 @@ testplans:
       mailfrom: Tapper Testplan Reporter <Tapper@elbe.amd.com>,
       mailto: Tapper Testplan Reporter <Tapper@elbe.amd.com>,
       base_url: https://artemis
+      cacheroot: /data/bancroft/artemis/live/configs/cacheroot/
+      cachetime: 10 min
 
 
 times:
