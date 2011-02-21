@@ -61,6 +61,18 @@ database:
     username:   hardware
     password:   myhardware
 
+testplans:
+  reporter:
+    interval: 86400 # one week
+    plugin:
+      name: Taskjuggler
+      url: https://osrc.amd.com/pub/schedules/
+      mailhost: smtp.osrc.amd.com
+      mailfrom: Tapper Testplan Reporter <Tapper@elbe.amd.com>,
+      mailto: Tapper Testplan Reporter <Tapper@elbe.amd.com>,
+      base_url: https://artemis
+
+
 times:
    poll_intervall:  10
    boot_timeout: 3600
@@ -105,7 +117,7 @@ files:
   simnow_config: /tmp/simnow.yml
   simnow_console: /root/.simnow/com1/simnow_out
 
-conserver: 
+conserver:
    server: gutrune.amd.com
    port:   7782
    user:   tapper
@@ -163,7 +175,7 @@ test:
 # whether Tapper::Reports::API allows mason and TT templates
   reports_enable_mason: 1
   reports_enable_tt: 1
-  
+
   test_value:      test
   mcp_port:        11337
   report_server:   localhost
