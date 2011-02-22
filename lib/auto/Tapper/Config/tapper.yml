@@ -62,15 +62,17 @@ database:
     password:   myhardware
 
 testplans:
+  generator:
+    interval: 86400  # one day
   reporter:
-    interval: 86400 # one week
+    interval: 604800 # one week
     plugin:
       name: Taskjuggler
       url: https://osrc.amd.com/pub/schedules/
       mailhost: smtp.osrc.amd.com
       mailfrom: Tapper Testplan Reporter <Tapper@elbe.amd.com>,
       mailto: Tapper Testplan Reporter <Tapper@elbe.amd.com>,
-      base_url: https://artemis
+      base_url: https://tapper
       cacheroot: /data/bancroft/artemis/live/configs/cacheroot/
       cachetime: 10 min
 
@@ -101,6 +103,7 @@ paths:
    simnow_path:            /opt/tapper/simnow-linux64/
    sync_path:              /data/bancroft/tapper/live/sync/
    temare_path:            /home/tapper/temare
+   testplan_path:          /data/bancroft/artemis/live/testplan/
    testprog_path:          /data/bancroft/tapper/live/testprogram/
    use_case_path:          /data/bancroft/tapper/live/configs/use_cases/
 
