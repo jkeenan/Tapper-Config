@@ -220,5 +220,6 @@ test:
     message_receiver_path:  /tmp/
     temare_path:            t/misc_files/bin/
     use_case_path:          root/mpc/
+    testplan_path:          t/files/testplan/
     autoinstall:
       grubfiles: t/misc_files/
