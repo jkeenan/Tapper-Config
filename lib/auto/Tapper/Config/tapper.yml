@@ -1,0 +1,225 @@
+
+---
+
+# +------------------------------------------------------------------
+# |
+# | Base config.
+# |
+# | Will be overwritten with special values for sub environments
+# |
+# |   'development'
+# |   'live'
+# |   'test'
+# |
+# | See below.
+# +------------------------------------------------------------------
+
+name: Tapper
+
+test_value:              base
+test_value_only_in_base: only_in_base
+
+# WebGUI currently offers only one queue for new testruns
+new_testrun_queue: AdHoc
+
+# whether Tapper::Reports::API allows mason and TT templates
+reports_enable_mason: 0
+reports_enable_tt: 1
+
+mcp_host:                165.204.15.71
+mcp_port:                1337
+tftp_server_address:     165.204.15.71
+#report_server:           165.204.15.71
+report_server:           bancroft
+report_port:             7357
+report_api_port:         7358
+sync_port:               1337
+prc_nfs_server:          bancroft
+
+reset_plugin:            OSRC
+reset_plugin_options:
+
+# 'db' is DEPRECATED in favor of simpler 'database'
+db:
+  type:       mysql
+  user:       tapper
+  password:   xyzxyzaa
+  testdb:     testsystem
+  hardwaredb: hardwaredb
+
+database:
+  TestrunDB:
+    dsn:        dbi:mysql:dbname=testrundb;mysql_use_result=1
+    username:   tapper
+    password:   tapper
+  ReportsDB:
+    dsn:        dbi:mysql:dbname=reportsdb;mysql_use_result=1
+    username:   tapper
+    password:   tapper
+  HardwareDB:
+    dsn:        dbi:mysql:dbname=hardwaredb;mysql_use_result=1
+    username:   hardware
+    password:   myhardware
+
+testplans:
+  generator:
+    interval: 86400  # one day
+  reporter:
+    interval: 604800 # one week
+    plugin:
+      name: Taskjuggler
+      url: https://osrc.amd.com/pub/schedules/
+      mailhost: smtp.osrc.amd.com
+      mailfrom: Tapper Testplan Reporter <Tapper@elbe.amd.com>,
+      mailto: Tapper Testplan Reporter <Tapper@elbe.amd.com>,
+      base_url: https://tapper
+      cacheroot: /data/bancroft/artemis/live/configs/cacheroot/
+      cachetime: 10 min
+
+
+times:
+   poll_intervall:  10
+   boot_timeout: 3600
+   reschedule_time: 3600
+   test_runtime_default: 7200
+   installer_timeout: 7200
+   receiver_timeout: 86400
+
+# configurable files paths
+paths:
+   base_dir:               /mnt/target/
+   config_path:            /data/bancroft/tapper/live/configs/
+   guest_mount_dir:        /mnt/guests/
+   grubpath:               /data/bancroft/tapper/live/configs/tftpboot
+   image_dir:              /data/bancroft/tapper/live/repository/images/
+   localdata_path:         /tftpboot/
+   message_receiver_path:  /data/bancroft/tapper/live/output/message_receiver/
+   metareport_path:        /data/bancroft/tapper/live/metareports/
+   nfsroot:                165.204.15.71:/data/bancroft/tapper/live/nfsroot/installation_base/
+   output_dir:             /data/bancroft/tapper/live/output/
+   package_dir:            /data/bancroft/tapper/live/repository/packages/
+   pids_path:              /var/run
+   prc_nfs_mountdir:       /data/bancroft/
+   simnow_path:            /opt/tapper/simnow-linux64/
+   sync_path:              /data/bancroft/tapper/live/sync/
+   temare_path:            /home/tapper/temare
+   testplan_path:          /data/bancroft/artemis/live/testplan/
+   testprog_path:          /data/bancroft/tapper/live/testprogram/
+   use_case_path:          /data/bancroft/tapper/live/configs/use_cases/
+
+
+# basenames of files
+files:
+  installer_kernel: /tftpboot/bzImage
+  log4perl_cfg: log4perl.cfg           # not used in PRC
+  receiver_log4perl_cfg: receiver_log4perl.cfg
+  windows_test_image: osko:/export/image_files/official_testing/windows_test.img
+  tapper_package:
+    linux64: tapperutils/opt-tapper64.tar.gz
+    linux32: tapperutils/opt-tapper32.tar.gz
+    windows: tapperutils/wintest.tar.gz
+  simnow_installer: /opt/tapper/bin/tapper-installer-simnow.pl
+  simnow_config: /tmp/simnow.yml
+  simnow_console: /root/.simnow/com1/simnow_out
+
+conserver:
+   server: gutrune.amd.com
+   port:   7782
+   user:   tapper
+
+
+# +------------------------------------------------------------------
+# |
+# | The following subsections (development, test, live) are merged
+# | into the toplevel hash and are usually *NOT* meant to be used
+# | directly.
+# |
+# +------------------------------------------------------------------
+
+# special live environment
+live:
+  test_value:     live
+
+# explicit development environment
+development:
+  install_tapper_toolchain: 1
+  paths:
+    nfsroot:                165.204.15.71:/data/bancroft/tapper/development/nfsroot/installation_base/
+    output_dir:             /tmp/output/
+    temare_path:            /data/bancroft/tapper/development/tools/temare
+    sync_path:              /data/bancroft/tapper/development/sync/
+    config_path:            /data/bancroft/tapper/development/configs/
+    use_case_path:          /data/bancroft/tapper/development/configs/use_cases/
+
+  test_value:          development
+  mcp_host:            165.204.15.37
+  report_server:       bascha
+  tftp_server_address: 165.204.15.37
+  database:
+    TestrunDB:
+      dsn:        dbi:mysql:dbname=testrundb_dev;mysql_use_result=1
+      username:   tapper
+      password:   tapper
+    ReportsDB:
+      dsn:        dbi:mysql:dbname=reportsdb_dev;mysql_use_result=1
+      username:   tapper
+      password:   tapper
+    HardwareDB:
+      dsn:        dbi:mysql:dbname=hardwaredb_dev;mysql_use_result=1
+      username:   tapper
+      password:   tapper
+  files:
+    log4perl_cfg: log4perl_test.cfg
+    receiver_log4perl_cfg: receiver_log4perl_test.cfg
+    tapper_package:
+      linux64: tapperutils/opt-tapper64_devel.tar.gz
+      linux32: tapperutils/opt-tapper32_devel.tar.gz
+
+# special test environment
+test:
+# whether Tapper::Reports::API allows mason and TT templates
+  reports_enable_mason: 1
+  reports_enable_tt: 1
+
+  test_value:      test
+  mcp_port:        11337
+  report_server:   localhost
+  report_port:     17357
+  report_api_port: 17358
+  sync_port:       17359
+  reset_plugin:    DoNothing
+  reset_plugin_options:
+    some_dummy_return_message: hello-reset
+  database:
+    TestrunDB:
+      dsn:        dbi:SQLite:dbname=t/tapper_schema_testrundb_test.sqlite
+      username:   ''
+      password:   ''
+    ReportsDB:
+      dsn:        dbi:SQLite:dbname=t/tapper_schema_reportsdb_test.sqlite
+      username:   ''
+      password:   ''
+    HardwareDB:
+      dsn:        dbi:SQLite:dbname=t/tapper_schema_hardwaredb_test.sqlite
+      username:   ''
+      password:   ''
+  files:
+    log4perl_cfg: log4perl_test.cfg            # not used in PRC
+    receiver_log4perl_cfg: receiver_log4perl_test.cfg
+  times:
+   poll_intervall:  10
+   boot_timeout: 5
+   reschedule_time: 3600
+   installer_timeout: 3
+   test_runtime_default: 5
+   receiver_timeout: 5
+  paths:
+    output_dir: t/file_upload/
+    grubpath: /tmp/
+    localdata_path: /tmp/
+    message_receiver_path:  /tmp/
+    temare_path:            t/misc_files/bin/
+    use_case_path:          root/mpc/
+    testplan_path:          t/files/testplan/
+    autoinstall:
+      grubfiles: t/misc_files/
