@@ -13,6 +13,8 @@ build_requires 'Test::Perl::Critic' => 0;
 build_requires 'Tapper::Test'      => '2.010005';
 build_requires 'File::Slurp'        => 0;
 
+author_requires 'Module::Install::WriteAll';
+
 requires 'Hash::Merge::Simple' => 0;
 requires 'File::Slurp'         => 0;
 requires 'File::ShareDir'      => 0;
