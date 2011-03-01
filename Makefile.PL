@@ -5,7 +5,7 @@ use inc::Module::Install;
 
 name     'Tapper-Config';
 all_from 'lib/Tapper/Config.pm';
-author   'AMD OSRC Tapper Team <tapper@amd64.com>';
+author   'AMD OSRC Tapper Team <tapper@amd64.org>';
 license  'freebsd';
 
 build_requires 'Test::More'         => 0;
