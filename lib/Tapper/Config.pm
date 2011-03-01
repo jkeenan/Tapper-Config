@@ -15,13 +15,9 @@ use File::ShareDir 'module_file';
 
 Tapper::Config - Offer configuration for all parts running on Tapper host
 
-=head1 VERSION
-
-Version 0.01
-
 =cut
 
-our $VERSION = '2.010076';
+our $VERSION = '3.000001';
 
 =head1 SYNOPSIS
 
