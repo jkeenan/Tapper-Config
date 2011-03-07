@@ -19,7 +19,7 @@ requires 'Hash::Merge::Simple' => 0;
 requires 'File::Slurp'         => 0;
 requires 'File::ShareDir'      => 0;
 requires 'perl'                => '5.010';
-requires 'YAML::Syck'          => 0;
+requires 'YAML::Syck'          => "1.17";
 
 WriteAll;
 
