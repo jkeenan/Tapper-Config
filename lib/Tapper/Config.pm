@@ -13,15 +13,11 @@ use File::ShareDir 'module_file';
 
 =head1 NAME
 
-Tapper::Config - Offer configuration for all parts running on Tapper host
-
-=head1 VERSION
-
-Version 0.01
+Tapper::Config - Tapper - Configuration hub for all Tapper libs
 
 =cut
 
-our $VERSION = '2.010076';
+our $VERSION = '3.000001';
 
 =head1 SYNOPSIS
 
@@ -32,16 +28,16 @@ our $VERSION = '2.010076';
 
 =head1 AUTHOR
 
-OSRC SysInt Team, C<< <osrc-sysint at elbe.amd.com> >>
+AMD OSRC Tapper Team, C<< <tapper at amd64.org> >>
 
 =head1 ACKNOWLEDGEMENTS
 
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2008 OSRC SysInt Team, all rights reserved.
+Copyright 2008-2011 AMD OSRC Tapper Team, all rights reserved.
 
-This program is released under the following license: restrictive
+This program is released under the following license: freebsd
 
 
 =cut

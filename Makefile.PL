@@ -5,13 +5,15 @@ use inc::Module::Install;
 
 name     'Tapper-Config';
 all_from 'lib/Tapper/Config.pm';
-author   'OSRC SysInt Team <osrc-sysint@elbe.amd.com>';
+author   'AMD OSRC Tapper Team <tapper@amd64.org>';
 license  'freebsd';
 
 build_requires 'Test::More'         => 0;
 build_requires 'Test::Perl::Critic' => 0;
-build_requires 'Tapper::Test'      => '2.010005';
+build_requires 'Tapper::Test'       => "3.000001";
 build_requires 'File::Slurp'        => 0;
+
+author_requires 'Module::Install::WriteAll';
 
 requires 'Hash::Merge::Simple' => 0;
 requires 'File::Slurp'         => 0;
