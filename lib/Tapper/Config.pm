@@ -17,7 +17,7 @@ Tapper::Config - Tapper - Context sensitive configuration hub for all Tapper lib
 
 =cut
 
-our $VERSION = '3.000002';
+our $VERSION = '3.000004';
 
 =head1 SYNOPSIS
 
