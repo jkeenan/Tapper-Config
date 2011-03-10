@@ -21,5 +21,8 @@ requires 'File::ShareDir'      => 0;
 requires 'perl'                => '5.010';
 requires 'YAML::Syck'          => "1.17";
 
+repository 'git://github.com/amd/Tapper-Config.git';
+bugtracker 'http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Tapper-Config';
+
 WriteAll;
 
