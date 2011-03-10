@@ -13,7 +13,7 @@ use File::ShareDir 'module_file';
 
 =head1 NAME
 
-Tapper::Config - Tapper - Configuration hub for all Tapper libs
+Tapper::Config - Tapper - Context sensitive configuration hub for all Tapper libs
 
 =cut
 
