@@ -1,27 +1,33 @@
-Tapper
+Tapper-Config
+=============
 
-Automatic Regression Test Environment and Measurement Instrument System
-
-INSTALLATION
-
-To install this module, run the following commands:
-
-	perl Build.PL
-	./Build
-	./Build test
-	./Build install
-
-SUPPORT AND DOCUMENTATION
-
-After installing, you can find documentation for this module with the
-perldoc command.
-
-    perldoc Tapper
+Context sensitive configuration hub for all Tapper libs
 
 
-COPYRIGHT AND LICENCE
+About Tapper 
+============
 
-Copyright (C) 2008 OSRC SysInt Team
+Tapper is an infrastructure for all aspects of testing 
+inclusive Operating Systems and Virtualization.
 
-This program is released under the following license: restrictive
+Tapper contains
 
+ - Automation
+ - Machine Scheduling
+ - Command line utils
+ - Web Frontend application
+ - Support for writing tests
+ - Powerful result evaluation API
+ - Testplan support with TaskJuggler
+ - Many use-cases from tracking test results to
+   benchmarking to full OS testing including virtualization
+
+More information about Tapper:
+
+ - https://github.com/amd/Tapper-Doc/
+ - http://search.cpan.org/~amd/Tapper-Doc/
+
+Other Tapper subprojects:
+
+ - https://github.com/amd
+ - http://search.cpan.org/~amd

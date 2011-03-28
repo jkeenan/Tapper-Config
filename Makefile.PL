@@ -10,7 +10,7 @@ license  'freebsd';
 
 build_requires 'Test::More'         => 0;
 build_requires 'Test::Perl::Critic' => 0;
-build_requires 'Tapper::Test'       => "3.000001";
+build_requires 'Tapper::Test'       => "3.000002";
 build_requires 'File::Slurp'        => 0;
 
 author_requires 'Module::Install::WriteAll';
@@ -19,7 +19,10 @@ requires 'Hash::Merge::Simple' => 0;
 requires 'File::Slurp'         => 0;
 requires 'File::ShareDir'      => 0;
 requires 'perl'                => '5.010';
-requires 'YAML::Syck'          => 0;
+requires 'YAML::Syck'          => "1.17";
+
+repository 'git://github.com/amd/Tapper-Config.git';
+bugtracker 'http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Tapper-Config';
 
 WriteAll;
 
