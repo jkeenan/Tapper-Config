@@ -1,8 +1,10 @@
-2011-03-10 Steffen Schwigon <steffen.schwigon@amd.com>
+2010-03-30 Steffen Schwigon <steffen.schwigon@amd.com>
 
 	* v3.0.4
 
 	* distro maintenance
+	* rework log4perl handling
+	* message receiver logfile to /var/log
 
 2011-03-08 Steffen Schwigon <steffen.schwigon@amd.com>
 
