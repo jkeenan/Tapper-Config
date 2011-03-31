@@ -91,9 +91,9 @@ paths:
    base_dir:               /mnt/target/
    config_path:            /data/tapper/live/configs/
    guest_mount_dir:        /mnt/guests/
-   grubpath:               /data/tapper/live/configs/tftpboot
+   grubpath:               /data/tapper/live/configs/tftpboot/
    image_dir:              /data/tapper/live/repository/images/
-   localdata_path:         /tftpboot/
+   localdata_path:         /data/tapper/live/configs/tftpboot/
    message_receiver_path:  /data/tapper/live/output/message_receiver/
    metareport_path:        /data/tapper/live/metareports/
    nfsroot:                165.204.15.222:/data/tapper/live/nfsroot/installation_base/
