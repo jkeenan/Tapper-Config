@@ -9,6 +9,7 @@ plan tests => 10;
 
 use Tapper::Config;
 
+local $ENV{TAPPER_CONFIG_FILE}="lib/auto/Tapper/Config/tapper.yml";
 
 # test
 is(Tapper::Config->subconfig->{test_value},              'test',         "[context: test] base configs");
