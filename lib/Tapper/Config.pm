@@ -118,7 +118,9 @@ found from the list of remaining alternatives is used.
         sub _prepare_special_entries {
                 my ($Config) = @_;
 
-                $Config->{files}{log4perl_cfg} = module_file('Tapper::Config', $Config->{files}{log4perl_cfg});
+                if (not $Config->{files}{log4perl_cfg} =~ m,^/,) {
+                        $Config->{files}{log4perl_cfg} = module_file('Tapper::Config', $Config->{files}{log4perl_cfg});
+                }
                 return $Config;
         }
 
