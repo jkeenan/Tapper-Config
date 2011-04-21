@@ -73,10 +73,14 @@ found from the list of remaining alternatives is used.
                 my ($config) = @_;
                 my $new_config;
                 if (exists $ENV{TAPPER_CONFIG_FILE}) {
+                        my $env_config_file = $ENV{TAPPER_CONFIG_FILE} || "";
+                        die "Config file '$env_config_file' does not exist.\n" unless -r $env_config_file;
                         eval {
-                                $new_config = LoadFile($ENV{TAPPER_CONFIG_FILE});
+                                $new_config = LoadFile($env_config_file);
                         };
-                        die "Can not load config file '$ENV{TAPPER_CONFIG_FILE}': $@\n" if $@;
+                        die "Can not load config file '$env_config_file': $@\n" if $@;
+                } elsif ( -e "./.tapper.cfg" ) {
+                                $new_config = LoadFile("./.tapper.cfg");
                 } elsif ( -e "$ENV{HOME}/.tapper.cfg" ) {
                                 $new_config = LoadFile("$ENV{HOME}/.tapper.cfg");
                 } elsif ( -e "/etc/tapper.cfg" ) {
