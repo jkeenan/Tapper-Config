@@ -79,8 +79,6 @@ found from the list of remaining alternatives is used.
                                 $new_config = LoadFile($env_config_file);
                         };
                         die "Can not load config file '$env_config_file': $@\n" if $@;
-                } elsif ( -e "./.tapper.cfg" ) {
-                                $new_config = LoadFile("./.tapper.cfg");
                 } elsif ( -e "$ENV{HOME}/.tapper.cfg" ) {
                                 $new_config = LoadFile("$ENV{HOME}/.tapper.cfg");
                 } elsif ( -e "/etc/tapper.cfg" ) {

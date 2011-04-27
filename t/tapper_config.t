@@ -5,7 +5,7 @@ use warnings;
 
 use Test::More;
 
-plan tests => 11;
+plan tests => 10;
 
 use Tapper::Config;
 
@@ -43,13 +43,4 @@ like(Tapper::Config->subconfig->{files}{log4perl_cfg}, qr{auto/Tapper/Config/log
 
 Tapper::Config->_switch_context();
 isnt ($ENV{HARNESS_ACTIVE}, 0, "HARNESS_ACTIVE set back");
-
-{
-        local %ENV;
-        delete $ENV{TAPPER_CONFIG_FILE};
-
-        Tapper::Config->_switch_context();
-        is(Tapper::Config->subconfig->{some}{very}{local}{stuff}, 'affe', "[context: test] local .tapper.cfg");
-}
-Tapper::Config->_switch_context();
 
