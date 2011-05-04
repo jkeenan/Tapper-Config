@@ -72,6 +72,7 @@ found from the list of remaining alternatives is used.
         {
                 my ($config) = @_;
                 my $new_config;
+                no warnings 'uninitialized'; # $ENV{HOME} can be undef
                 if (exists $ENV{TAPPER_CONFIG_FILE}) {
                         eval {
                                 $new_config = LoadFile($ENV{TAPPER_CONFIG_FILE});
