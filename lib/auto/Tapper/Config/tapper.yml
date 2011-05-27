@@ -85,6 +85,7 @@ times:
    test_runtime_default: 7200
    installer_timeout: 7200
    receiver_timeout: 86400
+   action_poll_intervall: 10
 
 # configurable files paths
 paths:
