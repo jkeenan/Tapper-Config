@@ -77,9 +77,6 @@ testplans:
       cacheroot: /data/tapper/live/configs/cacheroot/
       cachetime: 10 min
 
-actions:
-  resume: /public/bin/osrc_rst -f -on
-
 
 times:
    poll_intervall:  10
@@ -188,10 +185,6 @@ test:
   reports_enable_mason: 1
   reports_enable_tt: 1
 
-  actions:
-    resume: t/bin/reset_testfile --first --host
-
-
   test_value:      test
   mcp_port:        11337
   report_server:   localhost
@@ -224,7 +217,6 @@ test:
    installer_timeout: 3
    test_runtime_default: 5
    receiver_timeout: 5
-   action_poll_intervall: 1
   paths:
     output_dir: t/file_upload/
     grubpath: /tmp/
