@@ -121,7 +121,7 @@ files:
     linux64: tapperutils/opt-tapper64.tar.gz
     linux32: tapperutils/opt-tapper32.tar.gz
     windows: tapperutils/wintest.tar.gz
-  tapper_prc: /opt/tapper/bin/tapper-automatic-test.pl
+  tapper_prc: /opt/tapper/bin/tapper-client
   simnow_installer: /opt/tapper/bin/tapper-installer-simnow.pl
   simnow_config: /tmp/simnow.yml
   simnow_console: /root/.simnow/com1/simnow_out
