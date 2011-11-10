@@ -40,6 +40,20 @@ webserver:               tapper
 reset_plugin:            OSRC
 reset_plugin_options:
 
+# Watch out: grub contains newlines and indented whitespace!
+mcp:
+  installer:
+    default_grub: |
+
+      serial --unit=0 --speed=115200
+      terminal serial
+
+      default 0
+      timeout 2
+      title Test
+           tftpserver $TAPPER_TFTPSERVER
+           kernel $TAPPER_KERNEL earlyprintk=serial,ttyS0,115200 console=ttyS0,115200 root=/dev/nfs ro ip=dhcp nfsroot=$TAPPER_NFSROOT $TAPPER_OPTIONS
+
 # 'db' is DEPRECATED in favor of simpler 'database'
 db:
   type:       mysql
