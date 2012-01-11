@@ -11,6 +11,7 @@ MANIFEST.bak
 MANIFEST
 META.yml
 MYMETA.yml
+MYMETA.json
 inc
 Makefile
 
