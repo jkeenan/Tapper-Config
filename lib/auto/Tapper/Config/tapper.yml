@@ -44,15 +44,24 @@ reset_plugin_options:
 mcp:
   installer:
     default_grub: |
-
-      serial --unit=0 --speed=115200
-      terminal serial
-
       default 0
       timeout 2
-      title Test
-           tftpserver $TAPPER_TFTPSERVER
-           kernel $TAPPER_KERNEL earlyprintk=serial,ttyS0,115200 console=ttyS0,115200 root=/dev/nfs ro ip=dhcp nfsroot=$TAPPER_NFSROOT $TAPPER_OPTIONS
+      title Test run (Install)
+        tftpserver $TAPPER_TFTPSERVER
+        kernel $TAPPER_KERNEL root=/dev/nfs ro ip=dhcp nfsroot=$TAPPER_NFSROOT $TAPPER_OPTIONS $HOSTOPTIONS
+  test:
+    default_grub: |
+      default 0
+      timeout 2
+      title Test run (Execute)
+        root $grubroot
+        kernel /boot/vmlinuz root=$root ip=dhcp noapic $TAPPER_OPTIONS $HOSTOPTIONS
+        $initrd_options
+
+# for host specific replacements add another key after '_default' named after the respective hostname
+grub_completion_HOSTOPTIONS:
+  _default:
+    earlyprintk=serial,ttyS0,115200 console=ttyS0,115200
 
 # 'db' is DEPRECATED in favor of simpler 'database'
 db:
