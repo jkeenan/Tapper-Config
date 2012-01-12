@@ -24,15 +24,11 @@ like(Tapper::Config->subconfig->{files}{log4perl_cfg}, qr{auto/Tapper/Config/log
         local $ENV{TAPPER_DEVELOPMENT} = 0;
         local $ENV{HARNESS_ACTIVE} = 0;
 
-        my $expected_grub = '
-serial --unit=0 --speed=115200
-terminal serial
-
-default 0
+        my $expected_grub = 'default 0
 timeout 2
-title Test
-     tftpserver $TAPPER_TFTPSERVER
-     kernel $TAPPER_KERNEL earlyprintk=serial,ttyS0,115200 console=ttyS0,115200 root=/dev/nfs ro ip=dhcp nfsroot=$TAPPER_NFSROOT $TAPPER_OPTIONS
+title Test run (Install)
+  tftpserver $TAPPER_TFTPSERVER
+  kernel $TAPPER_KERNEL root=/dev/nfs ro ip=dhcp nfsroot=$TAPPER_NFSROOT $TAPPER_OPTIONS $HOSTOPTIONS
 ';
 
         Tapper::Config->_switch_context();
