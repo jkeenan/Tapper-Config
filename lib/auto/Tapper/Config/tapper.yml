@@ -100,6 +100,13 @@ testplans:
       cacheroot: /data/tapper/live/configs/cacheroot/
       cachetime: 10 min
 
+notification:
+  sender:
+    plugins:
+      Mail:
+        mailhost: mailhost
+        mailfrom: Tapper Notifier <Tapper@tapper>,
+
 
 times:
    poll_intervall:  10
@@ -109,6 +116,7 @@ times:
    installer_timeout: 7200
    default_testprogram_timeout: 60
    receiver_timeout: 86400
+   notification_poll_intervall: 10
    action_poll_intervall: 10
 
 # configurable files paths
