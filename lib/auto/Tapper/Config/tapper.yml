@@ -22,6 +22,9 @@ test_value_only_in_base: only_in_base
 # WebGUI currently offers only one queue for new testruns
 new_testrun_queue: AdHoc
 
+# CLI uses this URL to show links to WebGUI
+base_url: http://tapper/tapper
+
 # whether Tapper::Reports::API allows mason and TT templates
 reports_enable_mason: 0
 reports_enable_tt: 1
@@ -96,7 +99,7 @@ testplans:
       mailhost: smtp.osrc.amd.com
       mailfrom: Tapper Testplan Reporter <Tapper@elbe.amd.com>,
       mailto: Tapper Testplan Reporter <Tapper@elbe.amd.com>,
-      base_url: https://tapper
+      base_url: http://tapper
       cacheroot: /data/tapper/live/configs/cacheroot/
       cachetime: 10 min
 
