@@ -1,4 +1,5 @@
 package Tapper::Config;
+# ABSTRACT: Tapper - Context sensitive configuration hub for all Tapper libs
 
 use 5.010;
 
@@ -11,34 +12,11 @@ use File::ShareDir      'module_file';
 use Hash::Merge::Simple 'merge';
 use File::ShareDir 'module_file';
 
-=head1 NAME
-
-Tapper::Config - Tapper - Context sensitive configuration hub for all Tapper libs
-
-=cut
-
-our $VERSION = '3.000012';
-
 =head1 SYNOPSIS
 
  use Tapper::Config;
  say Tapper::Config->subconfig->{test_value};
  say Tapper::Config->subconfig->{paths}{build_conf_path};
-
-
-=head1 AUTHOR
-
-AMD OSRC Tapper Team, C<< <tapper at amd64.org> >>
-
-=head1 ACKNOWLEDGEMENTS
-
-
-=head1 COPYRIGHT & LICENSE
-
-Copyright 2008-2011 AMD OSRC Tapper Team, all rights reserved.
-
-This program is released under the following license: freebsd
-
 
 =cut
 
@@ -46,7 +24,6 @@ This program is released under the following license: freebsd
 {
         # closure to forbid direct access to the config hash
         my $Config;
-
 
 
 =head2 default_merge
