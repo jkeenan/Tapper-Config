@@ -104,6 +104,11 @@ found from the list of remaining alternatives is used.
                 return $Config;
         }
 
+=head2 subconfig
+
+Return the actual config for the current context.
+
+=cut
         sub subconfig { $Config }
 
 }
