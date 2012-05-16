@@ -5,8 +5,8 @@ use warnings;
 
 use Test::More;
 
-BEGIN{ 
-        $ENV{TAPPER_CONFIG_FILE} = 't/additional_files/tapper.cfg'; 
+BEGIN{
+        $ENV{TAPPER_CONFIG_FILE} = 't/additional_files/tapper.cfg';
         $ENV{TAPPER_DEVELOPMENT} = 1;
 }
 
