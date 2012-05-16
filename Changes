@@ -1,6 +1,10 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+        - Added default configs for new features
+        - drop too heavy test requirements
+        - provide new clientpkg architecture 'local'
+        - Carved out installer grub file
         - big Dist::Zilla roundhouse kick
 
 2011-04-07  Steffen Schwigon  <steffen.schwigon@amd.com>
