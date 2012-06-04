@@ -16,7 +16,7 @@ local $ENV{TAPPER_CONFIG_FILE}="lib/auto/Tapper/Config/tapper.yml";
 is(Tapper::Config->subconfig->{test_value},              'test',         "[context: test] base configs");
 is(Tapper::Config->subconfig->{test_value_only_in_base}, 'only_in_base', "[context: test] base config");
 is(Tapper::Config->subconfig->{test}{files}{log4perl_cfg}, 'log4perl_test.cfg', "[context: test] log4perl config file");
-like(Tapper::Config->subconfig->{files}{log4perl_cfg}, qr{auto/Tapper/Config/log4perl_test.cfg}, "[context: test] log4perl config file fullpath");
+like(Tapper::Config->subconfig->{files}{log4perl_cfg}, qr{auto.Tapper.Config.log4perl_test\.cfg}, "[context: test] log4perl config file fullpath");
 
 {
         # live
@@ -35,7 +35,7 @@ title Test run (Install)
         is(Tapper::Config->subconfig->{test_value},              'live',         "[context: live] Subconfig");
         is(Tapper::Config->subconfig->{test_value_only_in_base}, 'only_in_base', "[context: live] base config");
         is(Tapper::Config->subconfig->{mcp}{installer}{default_grub}, $expected_grub, "[context: live] installer default grub");
-        like(Tapper::Config->subconfig->{files}{log4perl_cfg}, qr{auto/Tapper/Config/log4perl.cfg}, "[context: live] log4perl config file fullpath");
+        like(Tapper::Config->subconfig->{files}{log4perl_cfg}, qr{auto.Tapper.Config.log4perl\.cfg}, "[context: live] log4perl config file fullpath");
 }
 
 {

@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+        - test more lax on matching paths with slashes
+          for better Windows support
 
 4.0.1     2012-05-16
         - Added default configs for new features
