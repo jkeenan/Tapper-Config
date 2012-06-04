@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+4.0.2     2012-06-04
         - test more lax on matching paths with slashes
           for better Windows support
 
