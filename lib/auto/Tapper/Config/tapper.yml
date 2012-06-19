@@ -89,6 +89,7 @@ database:
     password:   myhardware
 
 testplans:
+  path: /data/tapper/live/testplans
   generator:
     interval: 86400  # one day
   reporter:
@@ -213,6 +214,9 @@ development:
     tapper_package:
       linux64: tapperutils/opt-tapper64_devel.tar.gz
       linux32: tapperutils/opt-tapper32_devel.tar.gz
+  testplans:
+    path: /data/tapper/live/testplans
+
 
 # special test environment
 test:
@@ -262,3 +266,5 @@ test:
     testplan_path:          t/files/testplan/
     autoinstall:
       grubfiles: t/misc_files/
+  testplans:
+    path: /data/tapper/live/testplans
