@@ -185,6 +185,9 @@ conserver:
    port:   7782
    user:   tapper
 
+# config for Tapper::Reports::Web
+web:
+  use_authentication: 0
 
 # +------------------------------------------------------------------
 # |
