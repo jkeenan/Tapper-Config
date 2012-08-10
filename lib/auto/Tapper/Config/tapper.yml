@@ -66,14 +66,6 @@ grub_completion_HOSTOPTIONS:
   _default:
     earlyprintk=serial,ttyS0,115200 console=ttyS0,115200
 
-# 'db' is DEPRECATED in favor of simpler 'database'
-db:
-  type:       mysql
-  user:       tapper
-  password:   xyzxyzaa
-  testdb:     testsystem
-  hardwaredb: hardwaredb
-
 database:
   TestrunDB:
     dsn:        dbi:mysql:dbname=testrundb;mysql_use_result=1
@@ -87,6 +79,33 @@ database:
     dsn:        dbi:mysql:dbname=hardwaredb;mysql_use_result=1
     username:   hardware
     password:   myhardware
+  by_TAPPERDBMS:
+    mysql:
+      TestrunDB:
+        dsn:        dbi:mysql:dbname=testrundb;mysql_use_result=1
+        username:   tapper
+        password:   tapper
+      ReportsDB:
+        dsn:        dbi:mysql:dbname=reportsdb;mysql_use_result=1
+        username:   tapper
+        password:   tapper
+      HardwareDB:
+        dsn:        dbi:mysql:dbname=hardwaredb;mysql_use_result=1
+        username:   hardware
+        password:   myhardware
+    postgresql:
+      TestrunDB:
+        dsn:        dbi:Pg:dbname=testrundb
+        username:   tapper
+        password:   tapper
+      ReportsDB:
+        dsn:        dbi:Pg:dbname=reportsdb
+        username:   tapper
+        password:   tapper
+      HardwareDB:
+        dsn:        dbi:Pg:dbname=hardwaredb
+        username:   hardware
+        password:   myhardware
 
 testplans:
   path: /data/tapper/live/testplans
@@ -208,6 +227,33 @@ development:
       dsn:        dbi:mysql:dbname=hardwaredb_dev;mysql_use_result=1
       username:   tapper
       password:   tapper
+    by_TAPPERDBMS:
+      mysql:
+        TestrunDB:
+          dsn:        dbi:mysql:dbname=testrundb_dev;mysql_use_result=1
+          username:   tapper
+          password:   tapper
+        ReportsDB:
+          dsn:        dbi:mysql:dbname=reportsdb_dev;mysql_use_result=1
+          username:   tapper
+          password:   tapper
+        HardwareDB:
+          dsn:        dbi:mysql:dbname=hardwaredb_dev;mysql_use_result=1
+          username:   tapper
+          password:   tapper
+      postgresql:
+        TestrunDB:
+          dsn:        dbi:Pg:dbname=testrundb_dev
+          username:   tapper
+          password:   tapper
+        ReportsDB:
+          dsn:        dbi:Pg:dbname=reportsdb_dev
+          username:   tapper
+          password:   tapper
+        HardwareDB:
+          dsn:        dbi:Pg:dbname=hardwaredb_dev
+          username:   tapper
+          password:   tapper
   files:
     log4perl_cfg: log4perl_test.cfg
     receiver_log4perl_cfg: receiver_log4perl_test.cfg

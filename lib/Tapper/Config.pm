@@ -26,7 +26,7 @@ use File::ShareDir 'module_file';
         my $Config;
 
 
-=head2 default_merge
+=head2 Default merge
 
 Merges default values from /etc/tapper into the config. This allows to
 overwrite values given from the config provided with the module. It
@@ -35,7 +35,7 @@ searches for config in the following places.
 * $ENV{HOME}/.tapper.cfg
 * /etc/tapper.cfg
 
-If $ENV{TAPPER_CONFIG_FILE} exists it will be used no mather if it
+If $ENV{TAPPER_CONFIG_FILE} exists it will be used no matter if it
 contains an existing file. If this key does not exists the first file
 found from the list of remaining alternatives is used.
 
@@ -77,6 +77,19 @@ found from the list of remaining alternatives is used.
                             : 'live';
         }
 
+=head2 Environment merge
+
+Depending on environment variables a context of I<life>, I<test>, or
+I<development> is derived. Default is I<live>. If C<HARNESS_ACTIVE> is
+set the context is C<test>, if C<TAPPER_DEVELOPMENT> is set to C<1>
+the context is I<development>.
+
+This context is used for creating the final config. Inside the config
+all keys under I<development> or I<test> are merged up into the main
+level. Therefore usually there you put special values overriding
+defaults.
+
+=cut
 
         # TODO: automatically recognize context switch
         sub _switch_context
@@ -95,11 +108,55 @@ found from the list of remaining alternatives is used.
                 $Config  = _prepare_special_entries( $Config );
         }
 
+=head2 Special entries
+
+There are entries that are handled in special way:
+
+=over 4
+
+=item files.log4perl_cfg
+
+This local path/file entry is prepended by the
+sharedir path of Tapper::Config to make it an absolute path.
+
+=item database
+
+When the environment variable C<TAPPERDBMS> is set to C<postgresql>
+(or C<mysql>) then the config values for C<database.TestrunDB>,
+C<database.ReportsDB>, and C<database.HardwareDB> are overwritten by
+the values <database.by_TAPPERDBMS.postgresql.TestrunDB>,
+<database.by_TAPPERDBMS.postgresql.ReportsDB>,
+<database.by_TAPPERDBMS.postgresql.HardwareDB>, respectively.
+
+This introduces a backwards compatible way of using another DBMS with
+Tapper, in particular PostgreSQL.
+
+=back
+
+These special entries are prepared after the default and context
+merges.
+
+=cut
+
         sub _prepare_special_entries {
                 my ($Config) = @_;
 
+                # Log4Perl: prepend sharedir path
                 if (not $Config->{files}{log4perl_cfg} =~ m,^/,) {
                         $Config->{files}{log4perl_cfg} = module_file('Tapper::Config', $Config->{files}{log4perl_cfg});
+                }
+
+                # DB config can be overridden triggered by env var
+                my $dbms = $ENV{TAPPERDBMS};
+                if ($dbms and _getenv ne 'test') {
+                        if ($dbms =~ m/^mysql|postgresql$/) {
+                                foreach (qw(TestrunDB ReportsDB HardwareDB)) {
+                                        my $val = $Config->{database}{by_TAPPERDBMS}{$dbms}{$_};
+                                        $Config->{database}{$_} = $val if defined $val;
+                                }
+                        } else {
+                                die 'Unsupported Tapper DBMS $TAPPERDBMS='.$ENV{TAPPERDBMS};
+                        }
                 }
                 return $Config;
         }
