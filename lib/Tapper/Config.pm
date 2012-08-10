@@ -26,7 +26,7 @@ use File::ShareDir 'module_file';
         my $Config;
 
 
-=head2 Default merge
+=head2 default_merge
 
 Merges default values from /etc/tapper into the config. This allows to
 overwrite values given from the config provided with the module. It
