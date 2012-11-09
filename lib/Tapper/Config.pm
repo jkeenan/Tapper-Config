@@ -32,7 +32,7 @@ Merges default values from /etc/tapper into the config. This allows to
 overwrite values given from the config provided with the module. It
 searches for config in the following places.
 * filename given in $ENV{TAPPER_CONFIG_FILE}
-* $ENV{HOME}/.tapper.cfg
+* $ENV{HOME}/.tapper/tapper.cfg
 * /etc/tapper.cfg
 
 If $ENV{TAPPER_CONFIG_FILE} exists it will be used no matter if it
@@ -48,26 +48,29 @@ found from the list of remaining alternatives is used.
         sub default_merge
         {
                 my ($config) = @_;
-                my $new_config;
+
                 no warnings 'uninitialized'; # $ENV{HOME} can be undef
-                if (exists $ENV{TAPPER_CONFIG_FILE}) {
-                        my $env_config_file = $ENV{TAPPER_CONFIG_FILE} || "";
-                        die "Config file '$env_config_file' does not exist.\n" unless -r $env_config_file;
-                        eval {
-                                $new_config = LoadFile($env_config_file);
-                        };
-                        die "Can not load config file '$env_config_file': $@\n" if $@;
-                } elsif ( -e "$ENV{HOME}/.tapper/tapper.cfg" ) {
-                        $new_config = LoadFile("$ENV{HOME}/.tapper/tapper.cfg");
-                } elsif ( -e "/etc/tapper.cfg" ) {
-                        $new_config = LoadFile("/etc/tapper.cfg");
-                } else {
-                        return $config;
+
+                my $env_config_file    = $ENV{TAPPER_CONFIG_FILE} || "";
+                my $user_config_file   = "$ENV{HOME}/.tapper/tapper.cfg";
+                my $global_config_file = "/etc/tapper.cfg";
+
+                my $new_config;
+                my $new_config_file;
+
+                $new_config_file =
+                 (exists $ENV{TAPPER_CONFIG_FILE}) ? $env_config_file
+                 : (-e $user_config_file   && !$ENV{HARNESS_ACTIVE}) ? $user_config_file
+                 : (-e $global_config_file && !$ENV{HARNESS_ACTIVE}) ? $global_config_file
+                 : undef;
+
+                if ($new_config_file) {
+                        eval { $new_config = LoadFile($new_config_file) };
+                        die "Can not load config file '$new_config_file': $@\n" if $@;
+                        $config = merge($config, $new_config);
                 }
-                $config = merge($config, $new_config);
                 return $config;
         }
-
 
         sub _getenv
         {
