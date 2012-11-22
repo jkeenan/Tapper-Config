@@ -1,9 +1,11 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+        - silence test log4perl
 
 4.1.1     2012-11-19
         - dzil pluginbundle TAPPER
+        - use $HOME/.tapper/tapper.cfg instead of $HOME/.tapper.cfg
 
 4.1.0     2012-10-19
         - [FEAT] special config handling for multiple databases
