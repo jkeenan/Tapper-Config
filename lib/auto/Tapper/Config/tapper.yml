@@ -306,14 +306,27 @@ test:
    test_runtime_default: 5
    receiver_timeout: 5
   paths:
-    output_dir: t/file_upload/
-    grubpath: /tmp/
-    localdata_path: /tmp/
-    message_receiver_path:  /tmp/
+    config_path:            t/tmp/
+    grubpath:               t/tmp/
+    grubpath:               t/tmp/
+    guest_mount_dir:        t/tmp/
+    image_dir:              t/tmp/
+    localdata_path:         t/tmp/
+    message_receiver_path:  t/tmp/
+    metareport_path:        t/tmp/
+    nfsroot:                t/tmp/
+    output_dir:             t/file_upload/
+    package_dir:            t/tmp/
+    pids_path:              t/tmp/
+    prc_nfs_mountdir:       t/tmp/
+    simnow_path:            t/tmp/
+    sync_path:              t/tmp/
     temare_path:            t/misc_files/bin/
-    use_case_path:          root/mpc/
     testplan_path:          t/files/testplan/
+    testprog_path:          t/tmp/
+    use_case_path:          root/mpc/
+    base_dir:               t/tmp/
     autoinstall:
       grubfiles: t/misc_files/
   testplans:
-    path: /data/tapper/live/testplans
+    path: t/testplans
