@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+4.1.2     2012-11-22
         - silence test log4perl
 
 4.1.1     2012-11-19
