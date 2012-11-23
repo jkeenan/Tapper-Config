@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+        - default config values for testing
 
 4.1.2     2012-11-22
         - silence test log4perl
