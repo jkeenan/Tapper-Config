@@ -39,8 +39,6 @@ sync_port:               1337
 prc_nfs_server:          tapper
 webserver:               tapper
 
-reset_plugin:            OSRC
-reset_plugin_options:
 
 # Watch out: grub contains newlines and indented whitespace!
 mcp:
@@ -285,9 +283,6 @@ test:
   report_port:     17357
   report_api_port: 17358
   sync_port:       17359
-  reset_plugin:    DoNothing
-  reset_plugin_options:
-    some_dummy_return_message: hello-reset
   database:
     TestrunDB:
       dsn:        dbi:SQLite:dbname=t/tapper_schema_testrundb_test.sqlite

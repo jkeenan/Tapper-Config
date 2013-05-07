@@ -9,7 +9,7 @@ use warnings;
 use YAML::Syck;
 use File::Slurp         'slurp';
 use File::ShareDir      'module_file';
-use Hash::Merge::Simple 'merge';
+use Hash::Merge    'merge';
 use File::ShareDir 'module_file';
 
 =head1 SYNOPSIS
@@ -67,6 +67,7 @@ found from the list of remaining alternatives is used.
                 if ($new_config_file) {
                         eval { $new_config = LoadFile($new_config_file) };
                         die "Can not load config file '$new_config_file': $@\n" if $@;
+                        Hash::Merge::set_behavior( 'RIGHT_PRECEDENT' );
                         $config = merge($config, $new_config);
                 }
                 return $config;
@@ -107,6 +108,7 @@ defaults.
                 $Config  = Load($yaml);
                 $Config  = default_merge($Config);
 
+                Hash::Merge::set_behavior( 'RIGHT_PRECEDENT' );
                 $Config  = merge( $Config, $Config->{$env} );
                 $Config  = _prepare_special_entries( $Config );
         }
