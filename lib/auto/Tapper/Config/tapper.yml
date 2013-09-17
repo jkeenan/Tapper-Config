@@ -70,10 +70,6 @@ database:
     dsn:        dbi:mysql:dbname=testrundb;mysql_use_result=1
     username:   tapper
     password:   tapper
-  ReportsDB:
-    dsn:        dbi:mysql:dbname=reportsdb;mysql_use_result=1
-    username:   tapper
-    password:   tapper
   HardwareDB:
     dsn:        dbi:mysql:dbname=hardwaredb;mysql_use_result=1
     username:   hardware
@@ -84,27 +80,11 @@ database:
         dsn:        dbi:mysql:dbname=testrundb;mysql_use_result=1
         username:   tapper
         password:   tapper
-      ReportsDB:
-        dsn:        dbi:mysql:dbname=reportsdb;mysql_use_result=1
-        username:   tapper
-        password:   tapper
-      HardwareDB:
-        dsn:        dbi:mysql:dbname=hardwaredb;mysql_use_result=1
-        username:   hardware
-        password:   myhardware
     postgresql:
       TestrunDB:
         dsn:        dbi:Pg:dbname=testrundb
         username:   tapper
         password:   tapper
-      ReportsDB:
-        dsn:        dbi:Pg:dbname=reportsdb
-        username:   tapper
-        password:   tapper
-      HardwareDB:
-        dsn:        dbi:Pg:dbname=hardwaredb
-        username:   hardware
-        password:   myhardware
 
 testplans:
   path: /data/tapper/live/testplans
@@ -226,39 +206,15 @@ development:
       dsn:        dbi:mysql:dbname=testrundb_dev;mysql_use_result=1
       username:   tapper
       password:   tapper
-    ReportsDB:
-      dsn:        dbi:mysql:dbname=reportsdb_dev;mysql_use_result=1
-      username:   tapper
-      password:   tapper
-    HardwareDB:
-      dsn:        dbi:mysql:dbname=hardwaredb_dev;mysql_use_result=1
-      username:   tapper
-      password:   tapper
     by_TAPPERDBMS:
       mysql:
         TestrunDB:
           dsn:        dbi:mysql:dbname=testrundb_dev;mysql_use_result=1
           username:   tapper
           password:   tapper
-        ReportsDB:
-          dsn:        dbi:mysql:dbname=reportsdb_dev;mysql_use_result=1
-          username:   tapper
-          password:   tapper
-        HardwareDB:
-          dsn:        dbi:mysql:dbname=hardwaredb_dev;mysql_use_result=1
-          username:   tapper
-          password:   tapper
       postgresql:
         TestrunDB:
           dsn:        dbi:Pg:dbname=testrundb_dev
-          username:   tapper
-          password:   tapper
-        ReportsDB:
-          dsn:        dbi:Pg:dbname=reportsdb_dev
-          username:   tapper
-          password:   tapper
-        HardwareDB:
-          dsn:        dbi:Pg:dbname=hardwaredb_dev
           username:   tapper
           password:   tapper
   files:
@@ -286,14 +242,6 @@ test:
   database:
     TestrunDB:
       dsn:        dbi:SQLite:dbname=t/tapper_schema_testrundb_test.sqlite
-      username:   ''
-      password:   ''
-    ReportsDB:
-      dsn:        dbi:SQLite:dbname=t/tapper_schema_reportsdb_test.sqlite
-      username:   ''
-      password:   ''
-    HardwareDB:
-      dsn:        dbi:SQLite:dbname=t/tapper_schema_hardwaredb_test.sqlite
       username:   ''
       password:   ''
   files:

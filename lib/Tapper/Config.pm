@@ -118,11 +118,8 @@ sharedir path of Tapper::Config to make it an absolute path.
 =item database
 
 When the environment variable C<TAPPERDBMS> is set to C<postgresql>
-(or C<mysql>) then the config values for C<database.TestrunDB>,
-C<database.ReportsDB>, and C<database.HardwareDB> are overwritten by
-the values <database.by_TAPPERDBMS.postgresql.TestrunDB>,
-<database.by_TAPPERDBMS.postgresql.ReportsDB>,
-<database.by_TAPPERDBMS.postgresql.HardwareDB>, respectively.
+(or C<mysql>) then the config values for C<database.TestrunDB> are overwritten
+by the values <database.by_TAPPERDBMS.postgresql.TestrunDB> respectively.
 
 This introduces a backwards compatible way of using another DBMS with
 Tapper, in particular PostgreSQL.
@@ -146,10 +143,8 @@ merges.
                 my $dbms = $ENV{TAPPERDBMS};
                 if ($dbms and _getenv ne 'test') {
                         if ($dbms =~ m/^mysql|postgresql$/) {
-                                foreach (qw(TestrunDB ReportsDB HardwareDB)) {
-                                        my $val = $Config->{database}{by_TAPPERDBMS}{$dbms}{$_};
-                                        $Config->{database}{$_} = $val if defined $val;
-                                }
+                                my $val = $Config->{database}{by_TAPPERDBMS}{$dbms}{TestrunDB};
+                                $Config->{database}{TestrunDB} = $val if defined $val;
                         } else {
                                 die 'Unsupported Tapper DBMS $TAPPERDBMS='.$ENV{TAPPERDBMS};
                         }
