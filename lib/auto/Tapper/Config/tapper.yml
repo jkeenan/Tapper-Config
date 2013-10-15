@@ -169,6 +169,7 @@ paths:
 files:
   installer_kernel: /tftpboot/bzImage
   log4perl_cfg: log4perl.cfg           # not used in PRC
+  log4perl_webgui_cfg: log4perl_webgui.cfg           # used in Tapper::Reports::Web
   receiver_log4perl_cfg: receiver_log4perl.cfg
   windows_test_image: osko:/export/image_files/official_testing/windows_test.img
   tapper_package:
@@ -189,6 +190,10 @@ conserver:
 # config for Tapper::Reports::Web
 web:
   use_authentication: 0
+
+# config for Tapper::Benchmark
+benchmark:
+    config_file: /data/tapper/live/configs/tapper_benchmark.conf
 
 # +------------------------------------------------------------------
 # |
