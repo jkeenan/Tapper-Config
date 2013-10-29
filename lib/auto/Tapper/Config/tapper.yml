@@ -193,7 +193,7 @@ web:
 
 # config for Tapper::Benchmark
 benchmark:
-    config_file: /data/tapper/live/configs/tapper_benchmark.conf
+    config_file: /opt/tapper/data/conf/tapper_benchmark.conf
 
 # +------------------------------------------------------------------
 # |
