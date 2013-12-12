@@ -303,6 +303,7 @@ test:
   files:
     log4perl_cfg: log4perl_test.cfg            # not used in PRC
     receiver_log4perl_cfg: receiver_log4perl_test.cfg
+    log4perl_webgui_cfg: t/config/log4perl_webgui.cfg
   times:
    poll_intervall:  10
    boot_timeout: 5
