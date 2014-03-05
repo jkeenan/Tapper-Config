@@ -32,7 +32,6 @@ reports_enable_tt: 1
 mcp_host:                tapper
 mcp_port:                1337
 tftp_server_address:     165.204.15.222
-#report_server:           165.204.15.222
 report_server:           tapper
 report_port:             7357
 report_api_port:         7358
@@ -45,6 +44,8 @@ reset_plugin_options:
 
 # Watch out: grub contains newlines and indented whitespace!
 mcp:
+  child:
+    get_message_sleep_interval: 10
   installer:
     default_grub: |
       default 0
