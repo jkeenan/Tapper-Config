@@ -35,22 +35,20 @@ title Test run (Install)
         is(Tapper::Config->subconfig->{test_value_only_in_base}, 'only_in_base', "[context: live] base config");
         is(Tapper::Config->subconfig->{mcp}{installer}{default_grub}, $expected_grub, "[context: live] installer default grub");
         like(Tapper::Config->subconfig->{files}{log4perl_cfg}, qr{auto.Tapper.Config.log4perl\.cfg}, "[context: live] log4perl config file fullpath");
-        like(Tapper::Config->subconfig->{database}{$_}{dsn}, qr/mysql/, "[context: live] dsn $_") foreach qw(TestrunDB ReportsDB HardwareDB);
+        like(Tapper::Config->subconfig->{database}{TestrunDB}{dsn}, qr/mysql/, "[context: live] dsn $_");
 }
 
 foreach my $development (0,1) {
         foreach my $dbms ("postgresql", "mysql") {
-                foreach my $db ("TestrunDB", "ReportsDB", "HardwareDB") {
-                        local $ENV{HARNESS_ACTIVE}     = 0;
-                        local $ENV{TAPPERDBMS}         = $dbms;
-                        local $ENV{TAPPER_DEVELOPMENT} = $development;
+                local $ENV{HARNESS_ACTIVE}     = 0;
+                local $ENV{TAPPERDBMS}         = $dbms;
+                local $ENV{TAPPER_DEVELOPMENT} = $development;
 
-                        Tapper::Config->_switch_context();
-                        my $is = Tapper::Config->subconfig->{database}{$db}{dsn};
-                        my $expected = Tapper::Config->subconfig->{database}{by_TAPPERDBMS}{$ENV{TAPPERDBMS}}{$db}{dsn};
-                        ok($is, "[context: ".($development ? "development" : "live").", ".$ENV{TAPPERDBMS}."] dsn $db exists" );
-                        is($is, $expected, "[context: ".($development ? "development" : "live").", ".$ENV{TAPPERDBMS}."] dsn $db value" );
-                }
+                Tapper::Config->_switch_context();
+                my $is = Tapper::Config->subconfig->{database}{'TestrunDB'}{dsn};
+                my $expected = Tapper::Config->subconfig->{database}{by_TAPPERDBMS}{$ENV{TAPPERDBMS}}{'TestrunDB'}{dsn};
+                ok($is, "[context: ".($development ? "development" : "live").", ".$ENV{TAPPERDBMS}."] dsn 'TestrunDB' exists" );
+                is($is, $expected, "[context: ".($development ? "development" : "live").", ".$ENV{TAPPERDBMS}."] dsn 'TestrunDB' value" );
         }
 }
 

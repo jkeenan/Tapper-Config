@@ -9,7 +9,7 @@ use warnings;
 use YAML::Syck;
 use File::Slurp         'slurp';
 use File::ShareDir      'module_file';
-use Hash::Merge::Simple 'merge';
+use Hash::Merge    'merge';
 use File::ShareDir 'module_file';
 
 =head1 SYNOPSIS
@@ -28,16 +28,13 @@ use File::ShareDir 'module_file';
 
 =head2 default_merge
 
-Merges default values from /etc/tapper into the config. This allows to
-overwrite values given from the config provided with the module. It
-searches for config in the following places.
-* filename given in $ENV{TAPPER_CONFIG_FILE}
-* $ENV{HOME}/.tapper/tapper.cfg
+Merges values from alternative config file locations into the
+config. This allows to overwrite values given from the config provided
+with the module. It searches for config in the following places.
 * /etc/tapper.cfg
+* $ENV{HOME}/.tapper/tapper.cfg
+* filename given in $ENV{TAPPER_CONFIG_FILE}
 
-If $ENV{TAPPER_CONFIG_FILE} exists it will be used no matter if it
-contains an existing file. If this key does not exists the first file
-found from the list of remaining alternatives is used.
 
 @param hash ref - config
 
@@ -51,23 +48,18 @@ found from the list of remaining alternatives is used.
 
                 no warnings 'uninitialized'; # $ENV{HOME} can be undef
 
-                my $env_config_file    = $ENV{TAPPER_CONFIG_FILE} || "";
-                my $user_config_file   = "$ENV{HOME}/.tapper/tapper.cfg";
-                my $global_config_file = "/etc/tapper.cfg";
-
-                my $new_config;
-                my $new_config_file;
-
-                $new_config_file =
-                 (exists $ENV{TAPPER_CONFIG_FILE}) ? $env_config_file
-                 : (-e $user_config_file   && !$ENV{HARNESS_ACTIVE}) ? $user_config_file
-                 : (-e $global_config_file && !$ENV{HARNESS_ACTIVE}) ? $global_config_file
-                 : undef;
-
-                if ($new_config_file) {
-                        eval { $new_config = LoadFile($new_config_file) };
-                        die "Can not load config file '$new_config_file': $@\n" if $@;
-                        $config = merge($config, $new_config);
+                foreach my $filename ("/etc/tapper.cfg",
+                                      $ENV{HOME} ? "$ENV{HOME}/.tapper/tapper.cfg" : '',
+                                      "$ENV{TAPPER_CONFIG_FILE}",
+                                     )
+                {
+                        if (-e $filename) {
+                                my $new_config;
+                                eval { $new_config = LoadFile($filename) };
+                                die "Can not load config file '$filename': $@\n" if $@;
+                                Hash::Merge::set_behavior( 'RIGHT_PRECEDENT' );
+                                $config = merge($config, $new_config);
+                        }
                 }
                 return $config;
         }
@@ -107,6 +99,7 @@ defaults.
                 $Config  = Load($yaml);
                 $Config  = default_merge($Config);
 
+                Hash::Merge::set_behavior( 'RIGHT_PRECEDENT' );
                 $Config  = merge( $Config, $Config->{$env} );
                 $Config  = _prepare_special_entries( $Config );
         }
@@ -125,11 +118,8 @@ sharedir path of Tapper::Config to make it an absolute path.
 =item database
 
 When the environment variable C<TAPPERDBMS> is set to C<postgresql>
-(or C<mysql>) then the config values for C<database.TestrunDB>,
-C<database.ReportsDB>, and C<database.HardwareDB> are overwritten by
-the values <database.by_TAPPERDBMS.postgresql.TestrunDB>,
-<database.by_TAPPERDBMS.postgresql.ReportsDB>,
-<database.by_TAPPERDBMS.postgresql.HardwareDB>, respectively.
+(or C<mysql>) then the config values for C<database.TestrunDB> are overwritten
+by the values <database.by_TAPPERDBMS.postgresql.TestrunDB> respectively.
 
 This introduces a backwards compatible way of using another DBMS with
 Tapper, in particular PostgreSQL.
@@ -153,10 +143,8 @@ merges.
                 my $dbms = $ENV{TAPPERDBMS};
                 if ($dbms and _getenv ne 'test') {
                         if ($dbms =~ m/^mysql|postgresql$/) {
-                                foreach (qw(TestrunDB ReportsDB HardwareDB)) {
-                                        my $val = $Config->{database}{by_TAPPERDBMS}{$dbms}{$_};
-                                        $Config->{database}{$_} = $val if defined $val;
-                                }
+                                my $val = $Config->{database}{by_TAPPERDBMS}{$dbms}{TestrunDB};
+                                $Config->{database}{TestrunDB} = $val if defined $val;
                         } else {
                                 die 'Unsupported Tapper DBMS $TAPPERDBMS='.$ENV{TAPPERDBMS};
                         }

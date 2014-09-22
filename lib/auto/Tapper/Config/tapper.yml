@@ -32,7 +32,6 @@ reports_enable_tt: 1
 mcp_host:                tapper
 mcp_port:                1337
 tftp_server_address:     165.204.15.222
-#report_server:           165.204.15.222
 report_server:           tapper
 report_port:             7357
 report_api_port:         7358
@@ -40,11 +39,11 @@ sync_port:               1337
 prc_nfs_server:          tapper
 webserver:               tapper
 
-reset_plugin:            OSRC
-reset_plugin_options:
 
 # Watch out: grub contains newlines and indented whitespace!
 mcp:
+  child:
+    get_message_sleep_interval: 10
   installer:
     default_grub: |
       default 0
@@ -71,10 +70,6 @@ database:
     dsn:        dbi:mysql:dbname=testrundb;mysql_use_result=1
     username:   tapper
     password:   tapper
-  ReportsDB:
-    dsn:        dbi:mysql:dbname=reportsdb;mysql_use_result=1
-    username:   tapper
-    password:   tapper
   HardwareDB:
     dsn:        dbi:mysql:dbname=hardwaredb;mysql_use_result=1
     username:   hardware
@@ -85,27 +80,11 @@ database:
         dsn:        dbi:mysql:dbname=testrundb;mysql_use_result=1
         username:   tapper
         password:   tapper
-      ReportsDB:
-        dsn:        dbi:mysql:dbname=reportsdb;mysql_use_result=1
-        username:   tapper
-        password:   tapper
-      HardwareDB:
-        dsn:        dbi:mysql:dbname=hardwaredb;mysql_use_result=1
-        username:   hardware
-        password:   myhardware
     postgresql:
       TestrunDB:
         dsn:        dbi:Pg:dbname=testrundb
         username:   tapper
         password:   tapper
-      ReportsDB:
-        dsn:        dbi:Pg:dbname=reportsdb
-        username:   tapper
-        password:   tapper
-      HardwareDB:
-        dsn:        dbi:Pg:dbname=hardwaredb
-        username:   hardware
-        password:   myhardware
 
 testplans:
   path: /data/tapper/live/testplans
@@ -169,6 +148,7 @@ paths:
 files:
   installer_kernel: /tftpboot/bzImage
   log4perl_cfg: log4perl.cfg           # not used in PRC
+  log4perl_webgui_cfg: log4perl_webgui.cfg           # used in Tapper::Reports::Web
   receiver_log4perl_cfg: receiver_log4perl.cfg
   windows_test_image: osko:/export/image_files/official_testing/windows_test.img
   tapper_package:
@@ -189,6 +169,10 @@ conserver:
 # config for Tapper::Reports::Web
 web:
   use_authentication: 0
+
+# config for Tapper::Benchmark
+benchmark:
+    config_file: /opt/tapper/data/conf/tapper_benchmark.conf
 
 # +------------------------------------------------------------------
 # |
@@ -222,39 +206,15 @@ development:
       dsn:        dbi:mysql:dbname=testrundb_dev;mysql_use_result=1
       username:   tapper
       password:   tapper
-    ReportsDB:
-      dsn:        dbi:mysql:dbname=reportsdb_dev;mysql_use_result=1
-      username:   tapper
-      password:   tapper
-    HardwareDB:
-      dsn:        dbi:mysql:dbname=hardwaredb_dev;mysql_use_result=1
-      username:   tapper
-      password:   tapper
     by_TAPPERDBMS:
       mysql:
         TestrunDB:
           dsn:        dbi:mysql:dbname=testrundb_dev;mysql_use_result=1
           username:   tapper
           password:   tapper
-        ReportsDB:
-          dsn:        dbi:mysql:dbname=reportsdb_dev;mysql_use_result=1
-          username:   tapper
-          password:   tapper
-        HardwareDB:
-          dsn:        dbi:mysql:dbname=hardwaredb_dev;mysql_use_result=1
-          username:   tapper
-          password:   tapper
       postgresql:
         TestrunDB:
           dsn:        dbi:Pg:dbname=testrundb_dev
-          username:   tapper
-          password:   tapper
-        ReportsDB:
-          dsn:        dbi:Pg:dbname=reportsdb_dev
-          username:   tapper
-          password:   tapper
-        HardwareDB:
-          dsn:        dbi:Pg:dbname=hardwaredb_dev
           username:   tapper
           password:   tapper
   files:
@@ -279,25 +239,15 @@ test:
   report_port:     17357
   report_api_port: 17358
   sync_port:       17359
-  reset_plugin:    DoNothing
-  reset_plugin_options:
-    some_dummy_return_message: hello-reset
   database:
     TestrunDB:
       dsn:        dbi:SQLite:dbname=t/tapper_schema_testrundb_test.sqlite
       username:   ''
       password:   ''
-    ReportsDB:
-      dsn:        dbi:SQLite:dbname=t/tapper_schema_reportsdb_test.sqlite
-      username:   ''
-      password:   ''
-    HardwareDB:
-      dsn:        dbi:SQLite:dbname=t/tapper_schema_hardwaredb_test.sqlite
-      username:   ''
-      password:   ''
   files:
     log4perl_cfg: log4perl_test.cfg            # not used in PRC
     receiver_log4perl_cfg: receiver_log4perl_test.cfg
+    log4perl_webgui_cfg: t/config/log4perl_webgui.cfg
   times:
    poll_intervall:  10
    boot_timeout: 5
