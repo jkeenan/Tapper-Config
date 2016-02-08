@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+        - log4perl tweaks
+        - database merge TestrunDB+ReportsDB->TestrunDB
 
 4.1.3     2012-11-23
         - default config values for testing
