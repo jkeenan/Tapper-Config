@@ -35,7 +35,7 @@ title Test run (Install)
         is(Tapper::Config->subconfig->{test_value_only_in_base}, 'only_in_base', "[context: live] base config");
         is(Tapper::Config->subconfig->{mcp}{installer}{default_grub}, $expected_grub, "[context: live] installer default grub");
         like(Tapper::Config->subconfig->{files}{log4perl_cfg}, qr{auto.Tapper.Config.log4perl\.cfg}, "[context: live] log4perl config file fullpath");
-        like(Tapper::Config->subconfig->{database}{TestrunDB}{dsn}, qr/mysql/, "[context: live] dsn $_");
+        like(Tapper::Config->subconfig->{database}{TestrunDB}{dsn}, qr/mysql/, "[context: live] dsn");
 }
 
 foreach my $development (0,1) {
