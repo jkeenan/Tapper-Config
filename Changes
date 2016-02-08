@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+5.0.0     2016-02-08
         - log4perl tweaks
         - database merge TestrunDB+ReportsDB->TestrunDB
 
