@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+        - set default log4perl dirs to /tmp
 
 5.0.0     2016-02-08
         - log4perl tweaks
