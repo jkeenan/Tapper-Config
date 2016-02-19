@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+        - store actually used tapper config file in config itself
+        - disable TAP::DOM caching in DB by default
 
 5.0.1     2016-02-16
         - set default log4perl dirs to /tmp
