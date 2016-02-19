@@ -59,6 +59,7 @@ with the module. It searches for config in the following places.
                                 die "Can not load config file '$filename': $@\n" if $@;
                                 Hash::Merge::set_behavior( 'RIGHT_PRECEDENT' );
                                 $config = merge($config, $new_config);
+                                $config->{_last_used_tapper_config_file} = $filename;
                         }
                 }
                 return $config;
