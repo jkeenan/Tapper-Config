@@ -39,6 +39,13 @@ sync_port:               1337
 prc_nfs_server:          tapper
 webserver:               tapper
 
+# Whether to cache TAP::DOMs in DB.
+#
+# This only speeds up things when using Tapper::Reports::DPath AND the
+# same TAP is queried again and again. Nowadays this combination is
+# rarely used, so we disable it by default because it wastes a HUGE
+# amount of space in the database.
+cache_tapdom_in_db: 0
 
 # Watch out: grub contains newlines and indented whitespace!
 mcp:
@@ -232,6 +239,7 @@ test:
 # whether Tapper::Reports::API allows mason and TT templates
   reports_enable_mason: 1
   reports_enable_tt: 1
+  cache_tapdom_in_db: 1
 
   test_value:      test
   mcp_port:        11337
