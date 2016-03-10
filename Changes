@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+
+5.0.2     2016-03-10
         - store actually used tapper config file in config itself
         - disable TAP::DOM caching in DB by default
 
