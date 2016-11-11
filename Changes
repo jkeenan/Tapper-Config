@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+        - default config for tapper_prc: tapper-client without path
 
 5.0.2     2016-03-10
         - store actually used tapper config file in config itself
