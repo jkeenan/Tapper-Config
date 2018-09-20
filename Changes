@@ -1,6 +1,7 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+        - default output dir for minion testruns
 
 5.0.3     2016-11-11
         - default config for tapper_prc: tapper-client without path
