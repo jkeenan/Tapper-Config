@@ -7,10 +7,10 @@ use strict;
 use warnings;
 
 use YAML::Syck;
-use File::Slurp         'slurp';
 use File::ShareDir      'module_file';
 use Hash::Merge    'merge';
 use File::ShareDir 'module_file';
+use Path::Tiny;
 
 =head1 SYNOPSIS
 
@@ -95,7 +95,7 @@ defaults.
 
                 return unless $env =~ /^test|live|development$/;
 
-                my $yaml = slurp module_file('Tapper::Config', 'tapper.yml');
+                my $yaml = path(module_file('Tapper::Config', 'tapper.yml'))->slurp;
                 $Config  = Load($yaml);
                 $Config  = default_merge($Config);
 
